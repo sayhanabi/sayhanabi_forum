@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^$
+RewriteCond %{HTTP_REFERER} !say-hanabi.com [NC]
+RewriteCond %{HTTP_REFERER} !localhost [NC]
+RewriteRule ^(.*)$ - [F,NC]
