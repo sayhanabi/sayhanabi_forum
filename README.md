@@ -1,4 +1,4 @@
-# Say Hanabi 論壇
+# Say Hanabi 论坛
 
-歡迎大家貢獻代碼。
-主題位於template/default/下。也可以選擇新建主題。
+欢迎大家贡献代码。
+搭建测试平台的教程位于<https://github.com/sayhanabi/sayhanabi_forum/wiki>
