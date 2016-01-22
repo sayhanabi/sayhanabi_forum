@@ -288,19 +288,19 @@ class discuz_application extends discuz_base{
 			$_config['security']['authkey'] = md5($_config['cookie']['cookiepre'].$_config['db'][1]['dbname']);
 		}
 
-		//if(empty($_config['debug']) || !file_exists(libfile('function/debug'))) {
-			//define('DISCUZ_DEBUG', false);
-			//error_reporting(0);
-		//} elseif($_config['debug'] === 1 || $_config['debug'] === 2 || !empty($_REQUEST['debug']) && $_REQUEST['debug'] === $_config['debug']) {
+		if(empty($_config['debug']) || !file_exists(libfile('function/debug'))) {
+			define('DISCUZ_DEBUG', false);
+			error_reporting(0);
+		} elseif($_config['debug'] === 1 || $_config['debug'] === 2 || !empty($_REQUEST['debug']) && $_REQUEST['debug'] === $_config['debug']) {
 			define('DISCUZ_DEBUG', true);
-			//error_reporting(E_ERROR);
-			//if($_config['debug'] === 2) {
+			error_reporting(E_ERROR);
+			if($_config['debug'] === 2) {
 				error_reporting(E_ALL);
-			//}
-		//} else {
-			//define('DISCUZ_DEBUG', false);
-			//error_reporting(0);
-		//}
+			}
+		} else {
+			define('DISCUZ_DEBUG', false);
+			error_reporting(0);
+		}
 		define('STATICURL', !empty($_config['output']['staticurl']) ? $_config['output']['staticurl'] : 'static/');
 		$this->var['staticurl'] = STATICURL;
 
