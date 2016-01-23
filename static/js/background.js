@@ -1,5 +1,5 @@
 var totalImages = 5; //总图片数量
-var defaultImage = 3; //默认图片，填编号
+var defaultImage = 5; //默认图片，填编号
 var cssAssets = [
     [
         ["forum", "thread", "home::spacecp", "home::task", "home::medal", "portal", "userapp", "cp", "search"],
