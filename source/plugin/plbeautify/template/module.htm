@@ -1,0 +1,58 @@
+{eval
+function tpl_plbeautify_global_header_output($showStyle, $showLazyLoadJs) {
+}
+<!--{block return}-->
+	<!--{if $showStyle}-->
+		<style type="text/css">
+		.tl cite{padding-top:6px;}
+		.tl .by {width:125px;}
+		.pstyle img {width:25px;height:25px;float:left;border: 1px solid #ccc; padding: 2px; margin: 0px; background-color: #fff;margin:3px 3px 0 0;}
+		.plstyle img {width:35px;height:35px;float:left;border: 1px solid #ccc; padding: 2px; margin: 0px; background-color: #fff;margin:3px 3px 0 0;}
+		</style>
+	<!--{/if}-->
+	<!--{if $showLazyLoadJs}-->
+<script type="text/javascript" src="source/plugin/plbeautify/images/jquery.min.js"></script>
+<script type="text/javascript" src="source/plugin/plbeautify/images/jquery.lazyload.mini.js"></script>
+<script type="text/javascript">
+var jq = jQuery.noConflict();
+jq(function() {
+	jq("img").lazyload({
+		 placeholder : "source/plugin/plbeautify/images/grey.gif",
+		 effect      : "fadeIn"
+	});
+});</script>
+	<!--{/if}-->
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+function tpl_plbeautify_forumdisplay_author_output($uid, $avatar, $isAnonymous = false, $position = 'right') {
+}
+<!--{block return}-->
+	<!--{if $uid && $avatar && !$isAnonymous}-->
+		<span class="p{if $position == 'left'}l{/if}style"><a href="home.php?mod=space&uid=$uid" c="1" target="_blank">$avatar</a></span>
+	<!--{else}-->
+		<span class="p{if $position == 'left'}l{/if}style"><img src="source/plugin/plbeautify/images/noavatar_small.gif"></span>
+	<!--{/if}-->
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+function tpl_plbeautify_viewthread_sidetop_output($pid, $credits, $cper, $authortitle, $next_group, $needcredit, $width) {
+	$next_group = lang('plugin/plbeautify', $next_group, array('$needcredit' => $needcredit));
+}
+<!--{block return}-->
+	<p id="plgup{$pid}" onmouseover="showMenu({'ctrlid':this.id, 'pos':'12!'});">
+		<span style="float:left;">{lang plbeautify:lvup}&nbsp;</span>
+		<span style="padding-top:4px;float:left;"><img width="2" height="12" src="source/plugin/plbeautify/images/expl.gif"><img width="{$width}" height="12" src="source/plugin/plbeautify/images/expc.gif"><img width="6" height="12" src="source/plugin/plbeautify/images/expr.gif"></span>&nbsp;<span>{$cper}%</span>
+	</p>
+	<div id="plgup{$pid}_menu" class="tip tip_4" style="position: absolute; z-index: 301; left: 215px; top: 771px; display: none; ">
+		<div class="tip_horn"></div>
+		<div class="tip_c">{lang plbeautify:curr_group} <span style="color:red;">{$authortitle}</span><br />{lang plbeautify:curr_credits} <span style="color:red;">{$credits}</span>, {$next_group}</div>
+	</div>
+<!--{/block}-->
+<!--{eval return $return;}-->
+{eval
+}
+
+}
