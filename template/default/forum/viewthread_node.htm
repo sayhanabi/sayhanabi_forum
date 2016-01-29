@@ -79,8 +79,8 @@ $postshowavatars = !($_G['setting']['bannedmessages'] & 2 && ($post['memberstatu
 				<!--{/if}-->
 				<!--{hook/viewthread_avatar $postcount}-->
 				</div>
-				<!--{hook/viewthread_sidetop $postcount}-->
 				<!--{if !($_G['setting']['threadguestlite'] && !$_G['uid'])}-->
+					<!--{hook/viewthread_sidetop $postcount}-->
 					{eval viewthread_profile_node('left', $post);}
 					<!--{if $post[authorid] != $_G[uid]}-->
 						<ul class="xl xl2 o cl">
@@ -92,8 +92,8 @@ $postshowavatars = !($_G['setting']['bannedmessages'] & 2 && ($post['memberstatu
 							<li class="pm2"><a href="home.php?mod=spacecp&ac=pm&op=showmsg&handlekey=showmsg_$post[authorid]&touid=$post[authorid]&pmid=0&daterange=2&pid=$post[pid]&tid=$post[tid]" onclick="showWindow('sendpm', this.href);" title="{lang viewthread_left_sendpm}" class="xi2">{lang viewthread_left_sendpm}</a></li>
 						</ul>
 					<!--{/if}-->
+					<!--{hook/viewthread_sidebottom $postcount}-->
 				<!--{/if}-->
-				<!--{hook/viewthread_sidebottom $postcount}-->
 			<!--{elseif getstatus($post['status'], 5)}-->
 				<!--{if $_G['setting']['authoronleft']}-->
 				<div class="pi">
