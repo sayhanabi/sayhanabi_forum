@@ -1,0 +1,42 @@
+<div class="bm"><div class="bm_c">
+<!--{if $action == 'changegender'}-->
+			<h3 class="flb">
+				<em>{lang huxcity:changegendermsg}</em>
+			</h3>
+			<form action="plugin.php?id=huxcity:huxcity&mod=hotel&action=changegender" method="post" name="adminreg" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p class="mtn">
+						<select name="gender" class="txt">
+							<option value="1" selected>{lang huxcity:male}</option>
+							<option value="2">{lang huxcity:female}</option>
+						</select>
+						</p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn pnc" name="sexregsubmit" value="yes"><strong>{lang submit}</strong></button></p>
+			</form>
+<!--{elseif $action == 'qq'}-->
+			<h3 class="flb">
+				<em>QQ</em>
+			</h3>
+			<form action="plugin.php?id=huxcity:huxcity&mod=hotel&action=qq" method="post" name="adminreg" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p class="mtn"><input type="text" name="qq" value="$huxqq" /></p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn pnc" name="sexregsubmit" value="yes"><strong>{lang submit}</strong></button></p>
+			</form>
+<!--{else}-->
+<table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">
+<tr>
+<td width="260"><img src="$city_root/images/hotel.jpg" /><td/><td valign="top"><h2>{lang huxcity:hotelmsg}</h2><!--{if in_array($_G['groupid'], $vipgp)}--><br><font color="$colora">{lang huxcity:cityvip}</font><!--{/if}--><br>{lang huxcity:ninde}$paymoneyname:<font color="$colorb">$mycash</font><br>{lang huxcity:ninde}{lang huxcity:pow}:<font color="$colorb">$userpow/$userpowmax</font><br>{lang huxcity:hotelpaynum}:<font color="$colorb">$hotelpaynum</font> $paymoneyname<br>{lang huxcity:hotelvipnum}:<font color="$colorb">$hotelvipnum</font> $paymoneyname<br><br><a href="plugin.php?id=huxcity:huxcity&mod=hotel&action=ok&formhash={FORMHASH}"><font color="$colora">{lang huxcity:hotelgo} >>></font></a></td>
+</tr>
+</table>
+<!--{/if}-->
+</div></div>

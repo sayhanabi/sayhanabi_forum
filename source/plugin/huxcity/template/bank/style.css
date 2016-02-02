@@ -1,0 +1,57 @@
+.huxcity_bank .right{
+	float:right;
+	width:25%;
+}
+
+.huxcity_bank .left{
+	float:left;
+	width:74%;
+}
+
+.huxcity_bank .right_cq{
+	float:right;
+	width:50%;
+}
+
+.huxcity_bank .left_cq{
+	float:left;
+	width:50%;
+}
+
+.huxcity_bank .high_cq{
+	height:60px;
+}
+
+.huxcity_bank .high_dh{
+	height:26px;
+}
+
+.huxcity_bank .pdleft{
+	padding-left:10px;
+}
+
+.huxcity_bank .txtstyle{
+	padding-top:10px;
+	padding-bottom:10px;
+	line-height:22px;
+}
+
+.huxcity_bank .txtstyle2{
+	line-height:30px;
+}
+
+.huxcity_bank .dashed{
+	border-bottom:1px dashed #CCC;
+}
+
+.huxcity_bank .solid{
+	border-bottom:1px solid #CCC;
+}
+
+.huxcity_bank .text-align_right{
+	text-align:right;
+}
+
+#huxcity_bank_clear{
+	clear:both;
+}

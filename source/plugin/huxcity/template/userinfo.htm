@@ -1,0 +1,88 @@
+<script language="javascript">
+function dajie() {
+	if(confirm("$dajie_ok_msg")) {
+		var url = 'plugin.php?id=huxcity:huxcity&mod=regwushu&action=dajie&uuid=$uuid&formhash={FORMHASH}&handlekey=dajie';
+		//window.location = url;
+		ajaxget(url,"return_dajie");
+		return true;
+	} else {
+		return false;
+	}
+}
+</script>
+<div class="bm"><div class="bm_c">
+{lang huxcity:usernum}:<font color="$colorb">$usernum</font>, {lang huxcity:paymoney}:<font color="$colorb">$paymoneyname</font>, {lang huxcity:cityadmin}:<font color="$colora">$cityadmin</font>
+</div></div>
+<div class="bm bw0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td width="40%" style="padding-right:10px;" valign="top"><div class="bm bmw fl"><div class="bm_h cl"><h2><a>{lang huxcity:userinfo}</a></h2></div><div class='bm_c' style="padding:10px 10px;">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+<tr>
+<td style="border-bottom:1px dashed #CCCCCC" height="264" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr>
+<td valign="top">
+<ul>
+<li class="huxuserinfo">{lang huxcity:myname}:<font color="$colora">$userinfoname</font><!--{if $userinfoname != $username && $myatk != 0 && $citysetting['pkopen'] == '1'}--> [<a href="javascript:;" onclick="<!--{if $citysetting['pkflash']}-->showWindow('huxcity_pk', 'plugin.php?id=huxcity:huxcity&mod=regwushu&action=pkstart&uuid=$uuid','get',0)<!--{else}-->ajaxget('plugin.php?id=huxcity:huxcity&mod=regwushu&action=pk&uuid=$uuid&formhash={FORMHASH}&handlekey=pk', 'return_pk')<!--{/if}-->;return false;">{lang huxcity:gopk}</a>] <!--{/if}--><!--{if $userinfoname != $username && $userpow > 0 && $userinfopow < $citysetting['dajiepow'] && $citysetting['dajieopen'] == '1'}--> [<span onclick="dajie();" style="cursor:pointer;">{lang huxcity:godajie}</span>] <!--{/if}--></li>
+<li class="huxuserinfo">{lang huxcity:myid}:<font color="$colorb">$userinfouuid</font></li>
+<li class="huxuserinfo">{lang huxcity:mytime}:<font color="$colora">$userinforegtime</font></li>
+<!--{if $userinfogender != '0'}-->
+<li class="huxuserinfo">{lang huxcity:gender}:<font color="$colora"><!--{if $userinfogender == '1'}-->{lang huxcity:male}<!--{elseif $userinfogender == '2'}-->{lang huxcity:female}<!--{elseif $userinfogender == '3'}-->{lang huxcity:renyao}<!--{else}-->{lang huxcity:no_gender}<!--{/if}--></font></li><!--{/if}-->
+<!--{if $userinfosql['love'] != ''}-->
+<li class="huxuserinfo">{lang huxcity:mylove}:<font color="$colora">$userinfosql['love']</font></li>
+<!--{/if}-->
+<li class="huxuserinfo">{lang huxcity:mytitle}:<font color="$colora"><!--{if $cityadmin == $userinfoname}-->{lang huxcity:cityadmin} <!--{/if}-->$userinfolevelshow</font></li>
+<li class="huxuserinfo">{lang huxcity:status}:<font color="$colora"><!--{if $useronlinesql > 0}-->{lang huxcity:online}<!--{else}--><!--{if $citysetting['onlineopen'] == '1'}-->{lang huxcity:offline}<!--{else}-->{lang huxcity:freedom}<!--{/if}--><!--{/if}--></font></li>
+<!--{if $userinfocid != ''}--><li class="huxuserinfo">$conappname:<a href="plugin.php?id=huxcity:huxcity&mod=consortia&action=showcon&cid=$userinfosql['cid']"><font color="$colora">$userinfocid</font></a></li><!--{/if}-->
+<li class="huxuserinfo">{lang huxcity:atk}:<font color="$colorb">$userinfoatk</font> [<a style="cursor:pointer;" title="{lang huxcity:def}:{$userinfodef}&#10{lang huxcity:spd}:{$userinfospd}" name="xxx">{lang huxcity:sxmore}</a>]</li>
+<li>{lang huxcity:pow}:<font color="$colorb">$userinfopow/$userinfopowmax</font><br><img src='$city_root/images/hpleft.bmp' height="6"><span style="background-image: url('$city_root/images/hpblank.bmp'); width:160px; height:6px;display:inline-block"><img src='$city_root/images/hpgreen.bmp' width='$hpf%' height='6'></span><img src='$city_root/images/hpright.bmp' height="6"><br>{lang huxcity:exp}:<font color="$colorb">{$userinfosql['exp']}[{$expf}%]</font><br><img src='$city_root/images/expleft.gif' height="6"><span style="background-image: url('$city_root/images/expblank.gif'); width:160px; height:6px;display:inline-block"><img src='$city_root/images/expfill.gif' width='$expf%' height='6'></span><img src='$city_root/images/expright.gif' height="6"></li>
+</ul></td>
+<td width="90" valign="top" align="right">
+<ul>
+<li><a href="home.php?mod=space&uid=$userinfosql['uid']" target="_blank" c="1"><!--{avatar($userinfosql['uid'],small)}--></a></li>
+<!--{if in_array($usergid, $vipgp)}-->
+<li><img src="$city_root/images/vip.gif" width="44" /></li>
+<!--{/if}-->
+<li style="padding-top:2px;">{$userinfoequipatkpic}</li>
+<li style="padding-top:2px;">{$userinfoequipdefpic}</li>
+<li style="padding-top:2px;">{$userinfoequippowpic}</li>
+</ul>
+</td></tr></table></td>
+</tr>
+<tr>
+<td><img src="$housepic" width="288" height="155" border="0" /></td>
+</tr>
+<tr>
+<td align="center"><a href="plugin.php?id=huxcity:huxcity&mod=userinfo&uuid=$upuser">{lang huxcity:goleft}</a> << <!--{if $userinfosql['houseid'] == '0'}-->$housename<!--{else}--><a href="plugin.php?id=huxcity:huxcity&mod=house&action=sortshow&sortid=$userinfosql['houseid']">$housename</a><!--{/if}--><font color="$colorb">$houseid</font>{lang huxcity:hao} >> <a href="plugin.php?id=huxcity:huxcity&mod=userinfo&uuid=$nextuser">{lang huxcity:goright}</a></td>
+</tr>
+</table>
+</div></div></td>
+<td width="60%" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td colspan="2">
+<table width="100%" border="0" cellspacing="0" cellpadding="0"><tr><td style="padding-right:10px;" width="30%"><div class="bm bmw fl"><div class="bm_h cl"><h2><a>{lang huxcity:vi}</a></h2></div><div class='bm_c' style="height:164px;padding:5px 5px;">
+$userinfoimgfile1
+</div></div></td>
+<td width="70%"><div class="bm bmw fl"><div class="bm_h cl"><h2><a>{lang huxcity:citynoice}</a></h2></div><div class='bm_c' style="height:164px;padding:5px 5px;">
+<marquee scrollamount="2" direction="up" height="160">
+$citysetting['citynoice']
+</marquee>
+</div></div></td>
+</tr></table>
+
+</td></tr>
+<tr><td style="padding-right:10px;" width="50%"><div class="bm bmw fl"><div class="bm_h cl"><h2><a>{lang huxcity:cityfh}{$paymoneyname}</a></h2></div><div class='bm_c' style="height:230px;padding:5px 5px;">
+				<ol class="xl xl1">
+				<!--{loop $usertopdata $val}-->
+					<li><em><font color="#666666">$val['usermoney']</font></em><a href="plugin.php?id=huxcity:huxcity&mod=userinfo&uuid=$val['myid']"><font color="$colora">$val['username']</font></a></li>
+				<!--{/loop}-->
+				</ol>
+</div></div></td>
+<td width="50%"><div class="bm bmw fl"><div class="bm_h cl"><h2><a>{lang huxcity:citynew}</a></h2></div><div class='bm_c' style="height:230px;padding:5px 5px;">
+				<ol class="xl xl1">
+				<!--{loop $usernewdata $val}-->
+					<li><em><font color="#666666"><!--{echo dgmdate($val['regtime']);}--></font></em><a href="plugin.php?id=huxcity:huxcity&mod=userinfo&uuid=$val['myid']"><font color="$colora">$val['username']</font></a></li>
+				<!--{/loop}-->
+				</ol>
+</div></div></td>
+</tr></table></td>
+</tr>
+</table>
+</div>

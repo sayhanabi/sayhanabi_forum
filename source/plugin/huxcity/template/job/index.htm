@@ -1,0 +1,153 @@
+              <ul class="tb cl">
+				<li $actives['']><a href="plugin.php?id=huxcity:huxcity&mod=job">$joblang['adlist']</a></li>
+				<!--{if $adminid == '1' || $cityadmin == $username}-->
+				<li $actives['admin']><a href="plugin.php?id=huxcity:huxcity&mod=job&action=admin">{lang huxcity:appconfig}</a></li>
+				<!--{/if}-->
+              </ul>
+<div style="padding:2px;"></div>
+<div class="bm"><div class="bm_c">
+{lang huxcity:ninde}{$paymoneyname}:<font color="$colorb">$mycash</font>, {lang huxcity:ninde}{lang huxcity:pow}:<font color="$colorb">$userpow</font>, {lang huxcity:paypower}:<font color="$colorb">$appconfig['paypower']</font>
+</div></div>
+<!--{if $action == 'admin'}-->
+<div class="bm"><div class="bm_c">
+			<form action="plugin.php?id=huxcity:huxcity&mod=job&action=admin" method="post" name="add" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p><strong>{lang huxcity:appok}</strong></p><p class="mtn">
+						<select name="open" class="txt">
+							<option value="1"<!--{if $appconfig['open'] == '1'}--> selected<!--{/if}-->>{lang huxcity:appyes}</option>
+							<option value="0"<!--{if $appconfig['open'] == '0'}--> selected<!--{/if}-->>{lang huxcity:appno}</option>
+						</select>
+						</p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:appclosemsg}</strong></p><p class="mtn"><textarea name="closemsg" cols="30" rows="5" class="txt">$appconfig['closemsg']</textarea></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:paypower}</strong></p><p class="mtn"><input type="text" name="paypower" class="txt" value="$appconfig['paypower']"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adpay']</strong></p><p class="mtn"><input type="text" name="adpay" class="txt" value="$appconfig['adpay']"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adhuxjs']</strong></p><p class="mtn"><textarea name="adhuxjs" cols="30" rows="5" class="txt">$adhuxnum['adtext']</textarea></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adhuxhit']</strong></p><p class="mtn"><input type="text" name="adhuxhit" class="txt" value="$appconfig['adhuxhit']"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adwidth']</strong></p><p class="mtn"><input type="text" name="adwidth" class="txt" value="$appconfig['adwidth']"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adheight']</strong></p><p class="mtn"><input type="text" name="adheight" class="txt" value="$appconfig['adheight']"></p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn vm" name="addsubmit" value="yes"><strong>{lang submit}</strong></button></p>
+			</form>
+</div></div>
+<!--{elseif $action == 'adadd'}-->
+<div class="bm"><div class="bm_c">
+			<form action="plugin.php?id=huxcity:huxcity&mod=job&action=adadd" method="post" name="add" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p><strong>$joblang['adtext']</strong></p><p class="mtn"><textarea name="adtext" cols="30" rows="5" class="txt"></textarea></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adurl']</strong></p><p class="mtn"><input type="text" name="adurl" class="txt" value="http://"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adhitmoney']$paymoneyname</strong></p><p class="mtn"><input type="text" name="adhitmoney" class="txt" value="1"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['admoney']</strong></p><p class="mtn"><input type="text" name="admoney" class="txt" value="1"></p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn vm" name="addsubmit" value="yes"><strong>{lang submit}</strong></button></p>
+			</form>
+</div></div>
+<!--{elseif $action == 'adedit'}-->
+<div class="bm"><div class="bm_c">
+			<form action="plugin.php?id=huxcity:huxcity&mod=job&action=adedit&eid=$eid" method="post" name="add" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p><strong>$joblang['adtext']</strong></p><p class="mtn"><textarea name="adtext" cols="30" rows="5" class="txt">$ed['adtext']</textarea></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adurl']</strong></p><p class="mtn"><input type="text" name="adurl" class="txt" value="$ed['adurl']"></p>
+					</li>
+					<li>
+						<p><strong>$joblang['adhitmoney']$paymoneyname</strong></p><p class="mtn"><input type="text" name="adhitmoney" class="txt" value="$ed['adhitmoney']"></p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn vm" name="addsubmit" value="yes"><strong>{lang submit}</strong></button></p>
+			</form>
+</div></div>
+<!--{else}-->
+    <script language="javascript">
+    <!--   
+	function keyDown(event) 
+   {
+		var theEvent = event || window.event;
+		var theObj=theEvent.target || theEvent.srcElement;
+		var theObjb=theEvent.relatedTarget || theEvent.fromElement;
+		var theObjx=theEvent.pageX || theEvent.clientX;
+		var theObjy=theEvent.pageY || theEvent.clientY;
+		//if (theObj.tagName=="IFRAME" && (theObjb=="[object]" || theObjb=="[object HTMLHtmlElement]" || theObjb=="[object HTMLDivElement]" || theObjb=="[object HTMLTableCellElement]" || theObjb=="[object HTMLIFrameElement]" || theObjb=="null" || theObjb == 'undefined') && (theEvent.clientX<1 || theEvent.clientX > document.body.clientWidth) && (theEvent.clientX<1 || theEvent.clientX > document.body.clientHeight)){
+		if (theObj.tagName=="IFRAME" && (theEvent.clientX<1 || theEvent.clientX > document.body.clientWidth) && (theEvent.clientX<1 || theEvent.clientX > document.body.clientHeight)){
+			//alert(theObjx);
+			document.forms["adform"].submit();
+            var num = parseInt(shownum.innerHTML);
+            shownum.innerHTML = theObjb;
+        }
+        return false;
+    } 
+	document.onmousemove=keyDown; 
+	document.onmouseover=keyDown ;
+	document.onmouseout=keyDown ;
+	document.onblur=keyDown; 
+    //-->
+    </script>
+<div class="bm bw0"><div class='bm bmw fl'><div class='bm_h cl'>
+	<table cellspacing="1" cellpadding="0" width="100%" align="center" border="0">
+	<tr><td><a href="plugin.php?id=huxcity:huxcity&mod=job&action=adadd"><font color="$colora">[{$joblang['adadd']}]</font></a> $joblang['adpay']:<font color="$colorb">$appconfig['adpay']</font> $paymoneyname $joblang['admsg']</td></tr>
+	</table></div><div class='bm_c' style='padding:10px 10px;'>
+	<table cellspacing="1" cellpadding="0" width="100%" align="center" border="0">
+	<!--{if $adhuxnum['adtext'] != ''}-->
+	<tr><td colspan="6"><h2>$joblang['adhux'] $joblang['adhitget']:<font color="$colorb">$appconfig['adhuxhit']</font> $paymoneyname $joblang['adhitnum']:<font color="$colorb">$adhuxnum['adhitnum']</font> $joblang['status']:$adhuxnum['status']($joblang['adhuxmsg'])</h2></td></tr>
+	<tr><td colspan="6">
+    <form id="adform" name="adform" method="post" action="plugin.php?id=huxcity:huxcity&mod=job&action=adclick" target="ad_click">
+        <input name="eid" value="{$adhuxnum['eid']}" type="hidden" id="eid">
+            </form>
+    <iframe id="ad_click" name="ad_click" marginwidth="0"
+    marginheight="0" frameborder="0" scrolling="no"
+        src='about:blank' width="0" height="0">
+        </iframe>
+    <iframe id="ad_click" name="ad_click" marginwidth="0"
+     marginheight="0" frameborder="0" scrolling="no"
+        src="plugin.php?id=huxcity:huxcity&mod=job&action=adhuxshow" width="{$appconfig['adwidth']}" 
+        height="{$appconfig['adheight']}">
+    </iframe>	
+	</td></tr>
+	<tr><td colspan="6">&nbsp;</td></tr>
+	<!--{/if}-->
+	<th><h2>$joblang['adlists']</h2></th><th><h2>$joblang['adhitget']</h2></th><th><h2>$joblang['adhitnum']</h2></th><th><h2>$joblang['aduser']</h2></th><th><h2>$joblang['status']</h2></th><th><h2>{lang huxcity:op}</h2></th>
+	<!--{loop $flist $jval}-->
+	<tr><td><a href="plugin.php?id=huxcity:huxcity&mod=job&action=showad&eid=$jval['eid']" target="_blank"><font color="$colora">$jval['adtext']</font></a></td><td><font color="$colorb">$jval['adhitmoney']</font> $paymoneyname</td><td><font color="$colorb">$jval['adhitnum']</font></td><td><a href="plugin.php?id=huxcity:huxcity&mod=userinfo&user=$jval['username']"><font color="$colora">{$jval['username']}</font></a></td><td>$jval['status']</td><td><!--{if $username == $jval['username']}--><a href="plugin.php?id=huxcity:huxcity&mod=job&action=adedit&eid=$jval['eid']">{lang edit}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--{/if}--><!--{if $adminid == '1' || $cityadmin == $username}--><a href="plugin.php?id=huxcity:huxcity&mod=job&action=addel&eid=$jval['eid']&formhash={FORMHASH}">{lang delete}</a><!--{/if}--></td></tr>
+	<!--{/loop}-->
+	</table>
+	<!--{if $multi}-->
+	<table cellspacing="1" cellpadding="0" width="100%" align="center" border="0">
+	$multi
+	</table>
+	<!--{/if}-->
+</div></div></div>
+<!--{/if}-->
+<div class="bm"><div class="bm_c">
+$joblang['copyright']
+</div></div>

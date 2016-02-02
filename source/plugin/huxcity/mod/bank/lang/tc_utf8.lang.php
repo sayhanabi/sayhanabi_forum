@@ -1,0 +1,61 @@
+<?php
+
+if(!defined('IN_DISCUZ')) {
+	exit('Access Denied');
+}
+
+$banklang = array
+(
+	'pluginname' => '銀行',
+	'copyright' => '<font color=#999999>Powered by <font color=#999999>[HUXTeam]</font>vit</font>',
+	'bank' => '銀行儲蓄',	
+	'infotitle' => '用戶信息',
+	'bankinfo' => '1.存、取款 (活期和定期)<br>活期為每日計算利息,可隨時存取<br>定期為只有當存款時間到達存款期限後開始計算利息，在到存款期限前取款不計算利息<br>2.貸款、還款<br>貸款需要用經驗值做抵押，比例為1:1，到期還不上貸款的，經驗值收歸銀行所有，在規定期限內一次性還清貸款後，經驗值歸還',
+	'bankinfotitle' => '銀行功能簡介',
+	'notice' => '銀行公告',
+	'daylixi' => '日利息',
+	'huoqi' => '活期',
+	'dingqi' => '定期',
+	'dkopen' => '允許貸款',
+	'inmax' => '每筆最高存款',
+	'outmax' => '每筆最高取款',
+	'dkmin' => '最低貸款',
+	'dkmax' => '最高貸款',
+	'jiaoyitime' => '每筆交易時間間隔(秒)',
+	'hqfeilv' => '活期利率',
+	'dqfeilv' => '定期利率',
+	'dkfeilv' => '貸款利率',
+	'dqdate' => '定期天數',
+	'dkdate' => '還款週期(天)',
+	'nodata' => '暫無記錄',
+	'daikuan' => '銀行貸款',
+	'jiaoyidata' => '交易記錄',
+	'exp' => '經驗',
+	'tocun' => '存款',
+	'toqu' => '取款',
+	'todai' => '貸款',
+	'tohuan' => '還款',
+	'moneynum' => '金額',
+	'savemoneymsg' => '操作金額必須是大於零的整數，且每筆金額不能大於{inmax}',
+	'jiaoyitimemsg' => '兩次操作時間必須大於{jiaoyitime}秒',
+	'liximsg' => '結算利息{lixi}',
+	'tolixi' => '利息',
+	'moneytime' => '存款時間',
+	'moneytimeend' => '到期時間',
+	'moneytimepay' => '還款時間',
+	'moneytimedai' => '貸款時間',
+	'moneytimedailixi' => '應還利息',
+	'daikuanmsg' => '先還清貸款才能再次貸款',
+	'no_cunkuan' => '沒有這麼多存款，請重新操作',
+	'qu_all' => '定期存款必須一次取完，你的定期存款金額(含利息)為：{dqmoneynum}',
+	'clear_all' => '清空交易記錄',
+	'dai_del' => '貸款到期未還清，您抵押的經驗值被銀行沒收',
+	'diya_msg' => '貸款需要抵押經驗值，抵押比例為1/1，您目前的經驗值不足',
+	'daimoneymsg' => '貸款金額範圍：{dkmin} ~ {dkmax}',
+	'savemoneysum' => '總存款',
+	'not_huan' => '您沒有貸過款，不用急著還',
+	'huankuan_all' => '還款必須一次性還清',
+	'huankuan_time' => '貸款24小時之後才能還款',
+);
+
+?>

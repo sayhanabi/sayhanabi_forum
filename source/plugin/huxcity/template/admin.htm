@@ -1,0 +1,132 @@
+              <ul class="tb cl">
+				<li $actives['']><a href="plugin.php?id=huxcity:huxcity&mod=admin">{lang huxcity:luckyadmin}</a></li>
+				<li $actives['applist']><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=applist">{lang huxcity:applist}</a></li>
+				<li $actives['appadd']><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=appadd">{lang huxcity:appadd}</a></li>
+				<li $actives['outlink']><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=outlink">{lang huxcity:outlink}</a></li>
+				<li $actives['usermanage']><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=usermanage">{lang huxcity:usermanage}</a></li>
+				<li $actives['levelmanage']><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=levelmanage">{lang huxcity:levelmanage}</a></li>
+				<li $actives['getapp']><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=getapp">{lang huxcity:moreapp}</a></li>
+				<!--{if $action == ''}-->
+				<li class="o"><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=luckyadd" onclick="showWindow('huxcity_luckyadd', this.href,'get',0);return false;">{lang huxcity:luckyadd}</a></li>
+				<!--{/if}-->
+				<!--{if $action == 'levelmanage'}-->
+				<li class="o"><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=leveladd" onclick="showWindow('huxcity_leveladd', this.href,'get',0);return false;">{lang huxcity:leveladd}</a></li>
+				<!--{/if}-->
+				<!--{if $action == 'outlink'}-->
+				<li class="o"><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=outlinkadd" onclick="showWindow('huxcity_outlinkadd', this.href,'get',0);return false;">{lang huxcity:outlinkadd}</a></li>
+				<!--{/if}-->
+              </ul>
+<div style="padding:2px;"></div>
+<div class="bm"><div class="bm_c">
+<!--{if $action == 'applist'}-->
+<table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">
+<!--{loop $appss $appshow}-->
+<tr>
+<td width="50%">$appshow['appname'] $appshow['appver'] ($appshow['appid']/)</td><td width="50%" align="right"><!--{if $appshow['appshow'] == '1'}--><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=appclose&appid=$appshow['appid']&formhash={FORMHASH}">{lang huxcity:appclose}</a><!--{else}--><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=appopen&appid=$appshow['appid']&formhash={FORMHASH}">{lang huxcity:appopen}</a><!--{/if}-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=appup&appid=$appshow['appid']&formhash={FORMHASH}">{lang huxcity:appup}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=appdel&appid=$appshow['appid']&formhash={FORMHASH}">{lang huxcity:appdel}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=appedit&appid=$appshow['appid']" onclick="showWindow('huxcity_appedit', this.href,'get',0);return false;">{lang edit}</a></td>
+</tr>
+<!--{/loop}-->
+</table>
+<!--{elseif $action == 'appadd'}-->
+$applist
+<!--{elseif $action == 'outlink'}-->
+<table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">
+<!--{loop $appssoutlink $appshow}-->
+<tr>
+<td width="50%">$appshow['appname'] ($appshow['url'])</td><td width="50%" align="right"><!--{if $appshow['appshow'] == '1'}--><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=outlinkclose&eid=$appshow['eid']&formhash={FORMHASH}">{lang huxcity:appclose}</a><!--{else}--><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=outlinkopen&eid=$appshow['eid']&formhash={FORMHASH}">{lang huxcity:appopen}</a><!--{/if}-->&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=outlinkdel&eid=$appshow['eid']&formhash={FORMHASH}">{lang delete}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=outlinkedit&eid=$appshow['eid']" onclick="showWindow('huxcity_outlinkedit', this.href,'get',0);return false;">{lang edit}</a></td>
+</tr>
+<!--{/loop}-->
+</table>
+<!--{elseif $action == 'usermanage'}-->
+			<form action="plugin.php?id=huxcity:huxcity&mod=admin&action=usermanagelist" method="post" name="adminreg" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p><strong>{lang huxcity:myname}</strong></p><p class="mtn"><input type="text" name="username" class="txt" value=""></p>
+					</li>
+					<li>
+						<p><strong>UID</strong></p><p class="mtn"><input type="text" name="uid" class="txt" value=""></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:myid}</strong></p><p class="mtn"><input type="text" name="myid" class="txt" value=""></p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn vm" name="searchsubmit" value="yes"><strong>{lang search}</strong></button></p>
+			</form>
+<!--{elseif $action == 'usermanagelist'}-->
+	<table cellspacing="1" cellpadding="0" width="100%" align="center" border="0">
+	<th><h2>{lang huxcity:myname}</h2></th><th><h2>UID</h2></th><th><h2>{lang huxcity:myid}</h2></th><th><h2>{lang huxcity:op}</h2></th>
+	<!--{loop $flist $jval}-->
+	<tr><td><a href="plugin.php?id=huxcity:huxcity&mod=userinfo&user=$jval['username']"><font color="$colora">{$jval['username']}</font></a></td><td>$jval['uid']</td><td><!--{if $jval['myid'] == ''}-->{$jval['regtime']}{$jval['eid']}<!--{else}-->$jval['myid']<!--{/if}--></td><td><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=useredit&eid=$jval['eid']">{lang edit}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!--{if $jval['bantime'] == '0'}--><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=lock&eid=$jval['eid']&formhash={FORMHASH}">{lang huxcity:lock}</a><!--{else}--><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=unlock&eid=$jval['eid']&formhash={FORMHASH}">{lang huxcity:unlock}<!--{/if}--></td></tr>
+	<!--{/loop}-->
+	</table>
+	<!--{if $multi}-->
+	<table cellspacing="1" cellpadding="0" width="100%" align="center" border="0">
+	$multi
+	</table>
+	<!--{/if}-->
+<!--{elseif $action == 'useredit'}-->
+			<form action="plugin.php?id=huxcity:huxcity&mod=admin&action=useredit&eid=$eid" method="post" name="adminreg" enctype="multipart/form-data" >
+				<ul>
+					<li>
+						<p><strong>{lang huxcity:gender}</strong></p><p class="mtn">
+						<select name="gender" class="txt">
+							<option value="1"<!--{if $ed['gender'] == '1'}--> selected<!--{/if}-->>{lang huxcity:male}</option>
+							<option value="2"<!--{if $ed['gender'] == '2'}--> selected<!--{/if}-->>{lang huxcity:female}</option>
+						</select>
+						</p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:exp}</strong></p><p class="mtn"><input type="text" name="exp" class="txt" value="$ed['exp']"></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:pow}</strong></p><p class="mtn"><input type="text" name="power" class="txt" value="$ed['power']"></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:powmax}</strong></p><p class="mtn"><input type="text" name="powermax" class="txt" value="$ed['powermax']"></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:atk}</strong></p><p class="mtn"><input type="text" name="atk" class="txt" value="$ed['atk']"></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:def}</strong></p><p class="mtn"><input type="text" name="def" class="txt" value="$ed['def']"></p>
+					</li>
+					<li>
+						<p><strong>{lang huxcity:spd}</strong></p><p class="mtn"><input type="text" name="spd" class="txt" value="$ed['spd']"></p>
+					</li>
+				</ul>
+				<input type="hidden" name="formhash" value="{FORMHASH}" />
+				<!--{if !empty($_G['inajax'])}--><input type="hidden" name="handlekey" value="$_GET['handlekey']" /><!--{/if}-->
+				<p class="o pns{if empty($_G['inajax'])} mtw{/if}"><button type="submit" class="pn vm" name="editsubmit" value="yes"><strong>{lang submit}</strong></button></p>
+			</form>
+<!--{elseif $action == 'levelmanage'}-->
+	<table cellspacing="1" cellpadding="0" width="100%" align="center" border="0">
+	<th><h2>{lang huxcity:levelname}</h2></th><th><h2>{lang huxcity:levelexp}</h2></th><th><h2>{lang huxcity:sxplus}</h2></th><th><h2>{lang huxcity:op}</h2></th>
+	<!--{loop $levellist $jval}-->
+	<tr><td>$jval['level']</td><td>$jval['exp']</td><td>$jval['sxplus']%</td><td><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=leveledit&eid=$jval['eid']" onclick="showWindow('huxcity_leveladd', this.href,'get',0);return false;">{lang edit}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=leveldel&eid=$jval['eid']&formhash={FORMHASH}">{lang delete}</td></tr>
+	<!--{/loop}-->
+	</table>
+<!--{elseif $action == 'getapp'}-->
+	{$jxlist}{$jxlist2}
+<!--{else}-->
+<table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">
+<th><strong>{lang huxcity:luckymsg}</strong></th><th><strong>{lang huxcity:luckytype}</strong></th><th><strong>{lang huxcity:luckynums}</strong></th><th><strong>{lang huxcity:luckygl}</strong></th><th><strong>{lang huxcity:op}</strong></th>
+<!--{loop $luckylist $luckyshow}-->
+<tr>
+<td>$luckyshow['luckymsg']</td><td><!--{if $luckyshow['luckytype'] == '1'}-->$paymoneyname<!--{elseif $luckyshow['luckytype'] == '2'}-->$rmbmoneyname<!--{elseif $luckyshow['luckytype'] == '-1'}-->{lang huxcity:exp}<!--{else}-->{lang huxcity:appmagic}<!--{/if}--></td><td>$luckyshow['luckymin']:$luckyshow['luckymax']</td><td>$luckyshow['luckygl']</td><td><a href="plugin.php?id=huxcity:huxcity&mod=admin&action=luckyedit&eid=$luckyshow['eid']" onclick="showWindow('huxcity_luckyadd', this.href,'get',0);return false;">{lang edit}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="plugin.php?id=huxcity:huxcity&mod=admin&action=luckydel&eid=$luckyshow['eid']&formhash={FORMHASH}">{lang delete}</a></td>
+</tr>
+<!--{/loop}-->
+</table>
+<div style="padding:2px;"></div>
+<table width="100%" border="0" cellspacing="0" cellpadding="1" align="center">
+<!--{if $multi}-->
+$multi
+<!--{/if}-->
+</table>
+<!--{/if}-->
+</div></div>
+
+<div class="bm"><div class="bm_c">
+{$jxlistad}
+<div class="bm_c">Powered by <a href="http://addon.discuz.com/?@hux" target="_blank"><strong>HUXTeam</strong></a> [{lang huxcity:copyright_front}{lang huxcity:copyright_back} {$VeRsIoN}] @vit</div>
+</div></div>
