@@ -6,7 +6,7 @@ var cssAssets = [
         ["bm_c", "pl", "ct2_a", "ct1", "frame"]
     ],
     [
-        ["group", "dsu_paulsign", "plugin"],
+        ["group", "dsu_paulsign", "plugin", "huxcity-huxcity"],
         ["ct2"]
     ],
     [
