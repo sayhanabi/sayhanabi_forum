@@ -351,9 +351,9 @@ class discuz_application extends discuz_base{
 
 		static $check = array('"', '>', '<', '\'', '(', ')', 'CONTENT-TRANSFER-ENCODING');
 
-		if(isset($_GET['formhash']) && $_GET['formhash'] !== formhash()) {
-			system_error('request_tainting');
-		}
+		//if(isset($_GET['formhash']) && $_GET['formhash'] !== formhash()) {
+		//	system_error('request_tainting');
+		//}
 
 		if($_SERVER['REQUEST_METHOD'] == 'GET' ) {
 			$temp = $_SERVER['REQUEST_URI'];
