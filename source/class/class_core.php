@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 
 define('IN_DISCUZ', true);
 define('DISCUZ_ROOT', substr(dirname(__FILE__), 0, -12));
-define('DISCUZ_CORE_DEBUG', false);
+define('DISCUZ_CORE_DEBUG', true);
 define('DISCUZ_TABLE_EXTENDABLE', false);
 
 set_exception_handler(array('core', 'handleException'));
