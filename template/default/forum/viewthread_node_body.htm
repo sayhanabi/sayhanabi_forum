@@ -5,7 +5,7 @@
 	<div class="locked">{lang message_single_banned}</div>
 <!--{elseif $needhiddenreply}-->
 	<div class="locked">{lang message_ishidden_hiddenreplies}</div>
-<!--{elseif $post['first'] && $_G['forum_threadpay']}-->
+<!--{elseif $post['first'] && $_G['forum_threadpay'] && !($threadsort && $threadsortshow)}-->
 	<!--{template forum/viewthread_pay}-->
 <!--{elseif $_G['forum_discuzcode']['passwordlock'][$post[pid]]}-->
 	<div class="locked">{lang message_password_exists} {lang pleaseinputpw}<input type="text" id="postpw_$post[pid]" class="vm" />&nbsp;<button class="pn vm" type="button" onclick="submitpostpw($post[pid]{if $_GET['from'] == 'preview'},{$post[tid]}{else}{/if})"><strong>{lang submit}</strong></button></div>
@@ -41,7 +41,11 @@
 									<!--{if $option['type'] != 'info'}-->
 										<tr>
 											<th>$option[title]:</th>
-											<td><!--{if $option['value'] !== ''}-->$option[value] $option[unit]<!--{else}-->-<!--{/if}--></td>
+											<!--{if $_G['forum_threadpay'] && ($option[title] === '下载链接' || $option[title] === '提取码')}-->
+												<td><span style="color:red">请付费后浏览。</span><a href="javascript:;" class="y viewpay" title="{lang pay}" onclick="showWindow('pay', 'forum.php?mod=misc&action=pay&tid=$_G[tid]&pid=$post[pid]{if !empty($_GET['from'])}&from=$_GET['from']{/if}')">{lang pay}</a></td>
+											<!--{else}-->
+												<td><!--{if $option['value'] !== ''}-->$option[value] $option[unit]<!--{else}-->-<!--{/if}--></td>
+											<!--{/if}-->
 										</tr>
 									<!--{/if}-->
 								<!--{/loop}-->
