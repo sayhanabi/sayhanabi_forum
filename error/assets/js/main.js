@@ -40,11 +40,11 @@
 
 					// Images (in the format of 'url': 'alignment').
 						images: {
-							'../static/image/background/1.jpg': 'center',
-							'../static/image/background/2.jpg': 'center',
-							'../static/image/background/3.jpg': 'center',
-							'../static/image/background/4.jpg': 'center',
-							'../static/image/background/5.jpg': 'center'
+							'https://say-hanabi.com/static/image/background/1.jpg': 'center',
+							'https://say-hanabi.com/static/image/background/2.jpg': 'center',
+							'https://say-hanabi.com/static/image/background/3.jpg': 'center',
+							'https://say-hanabi.com/static/image/background/4.jpg': 'center',
+							'https://say-hanabi.com/static/image/background/5.jpg': 'center'
 						},
 
 					// Delay.
