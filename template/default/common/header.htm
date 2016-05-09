@@ -27,6 +27,8 @@
 		<link rel="stylesheet" type="text/css" id="diy_common" href="{$_G['setting']['csspath']}{STYLEID}_css_diy.css?{VERHASH}" />
 	<!--{/if}-->
 	<link rel="stylesheet" type="text/css" href="template/default/common/html5.css?{VERHASH}" />
+	<style>body {background-size: cover;background-position: center center;background-attachment: fixed;}
+	</style>
 </head>
 
 <body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}{if $_G['basescript'] === 'portal' && CURMODULE === 'list' && !empty($cat)} {$cat['bodycss']}{/if}" onkeydown="if(event.keyCode==27) return false;">
