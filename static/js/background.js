@@ -139,10 +139,10 @@ function getZone() {
 }
 
 function initEnvironment() {
-    preload();
     if (localStorage.SayHanabiBg) {
         shc0 = localStorage.SayHanabiBg;
     } else {
+        preload();
         shc0 = defaultImage;
         localStorage.SayHanabiBg = defaultImage;
     }
@@ -207,7 +207,7 @@ function loadBackgroundOpaque() {
 function preload() {
     var images = new Array();
     var dImages = new Array();
-    for (var i = 1; i < totalImages; i++){
+    for (var i = 1; i <= totalImages; i++){
         images[i] = new Image();
         images[i].src = "https://say-hanabi.com/static/image/background/" + i + ".jpg";
         dImages[i] = new Image();
