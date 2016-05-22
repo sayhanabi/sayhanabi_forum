@@ -45,6 +45,8 @@
 				textNode = document.createTextNode(buffer.substring(0, buffer.length - 2)+")");
 				sampleElement.innerHTML = "";
 				sampleElement.appendChild(textNode);
+			} else {
+				targetElement.getElementsByClassName("sample")[0].innerHTML = "";
 			}
 		}
 	},
