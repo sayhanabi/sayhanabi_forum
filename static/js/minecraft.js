@@ -5,7 +5,7 @@
 		{"host": "mc.say-hanabi.com", "port": "25565", "alias": "mc"},
 		{"host": "mc19.say-hanabi.com", "port": "25565", "alias": "mc19"}
 	],
-	api = "http://api.say-hanabi.com/mcQuery.php",
+	api = "https://say-hanabi.com/minecraft/mcQuery.php",
 	idPrefix = "mcstat-",
 	queryParser = function(obj){
 		var result = "?";
