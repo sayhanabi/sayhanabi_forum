@@ -21,7 +21,7 @@ body { background-color: transparent; }
 #spaceinfoshow { position: relative;}
 	#spaceinfoshow .oshr { float: none; margin-left: 10px; padding: 1px 5px 1px 22px; color: {HIGHLIGHTLINK}; }
 #doingform #message { width: 500px; }
-#toptb { padding: 0 10px; border-bottom: 1px solid {COMMONBORDER}; background: url({IMGDIR}/topnav.png) repeat-x; }
+#toptb { padding: 0 10px; border-bottom: 1px solid {COMMONBORDER}; background: url({IMGDIR}/topnav.png) repeat-x; position: relative;}
 #hd h2 span { display: block; }
 #hd ul.savebar { width: 450px; height: 20px; border: 1px solid #ccc;}
 #hd ul.savebar li { float:right; margin: 0 3px;}
