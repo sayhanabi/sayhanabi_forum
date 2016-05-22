@@ -5,7 +5,7 @@
 		{"host": "mc.say-hanabi.com", "port": "25565", "alias": "mc"},
 		{"host": "mc19.say-hanabi.com", "port": "25565", "alias": "mc19"}
 	],
-	api = "https://say-hanabi.com/minecraft/mcQuery.php",
+	api = "/minecraft/mcQuery.php",
 	idPrefix = "mcstat-",
 	queryParser = function(obj){
 		var result = "?";
@@ -45,6 +45,8 @@
 				textNode = document.createTextNode(buffer.substring(0, buffer.length - 2)+")");
 				sampleElement.innerHTML = "";
 				sampleElement.appendChild(textNode);
+			} else {
+				targetElement.getElementsByClassName("sample")[0].innerHTML = "";
 			}
 		}
 	},
@@ -54,7 +56,6 @@
 		}
 	};
 	document.addEventListener('DOMContentLoaded', function() {
-    	//var mainTarget = document.getElementById("mcstat");
     	var mainTarget = document.getElementById("toptb").getElementsByClassName("z")[0],
     	headElement = document.createElement("A");
     	headElement.innerHTML = "花火学园 Minecraft 服务器";
