@@ -586,7 +586,7 @@ CSS 写作注意事项：
 	#hd { border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} }
 		#hd .wp { padding: 10px 0 0; }
 
-			.hdc { min-height: 70px; margin-top: 30px;}
+			.hdc { min-height: 70px;}
 				.ie6 .hdc { height: 70px; }
 			#hd h2 { padding: 0 20px 8px 0; float: left; }
 				#space #hd h2 { margin-top: 0; }
