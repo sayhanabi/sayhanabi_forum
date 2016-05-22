@@ -584,7 +584,7 @@ CSS 写作注意事项：
 		#toptb .pipe { float: left; display: none; }
 
 	#hd { border-bottom: {HEADERBORDER} solid {SPECIALBORDER}; {HEADERBGCODE} }
-		#hd .wp { padding: 10px 0 0; }
+		#hd .wp { padding: 20px 0 0; }
 
 			.hdc { min-height: 70px;}
 				.ie6 .hdc { height: 70px; }
