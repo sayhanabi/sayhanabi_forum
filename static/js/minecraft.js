@@ -55,12 +55,16 @@
 	};
 	document.addEventListener('DOMContentLoaded', function() {
     	//var mainTarget = document.getElementById("mcstat");
-    	var mainTarget = document.getElementById("toptb").getElementsByClassName("z")[0];
+    	var mainTarget = document.getElementById("toptb").getElementsByClassName("z")[0],
+    	headElement = document.createElement("A");
+    	headElement.innerHTML = "花火学园 Minecraft 服务器";
+    	headElement.style.color = "red";
+    	mainTarget.appendChild(headElement);
     	for (var i = 0; i < servers.length; ++i){
 			var targetElement = document.createElement("A");
 			targetElement.innerHTML = '<span class="address"></span> \
 										<span class="online"></span> 人在线 \
-										<span class="sample"></span>';
+										<span class="sample" style="color:blue"></span>';
 			targetElement.id = idPrefix + servers[i]["alias"];
 			targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
 			mainTarget.appendChild(targetElement);
