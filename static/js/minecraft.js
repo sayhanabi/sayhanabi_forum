@@ -60,6 +60,7 @@
     	headElement = document.createElement("A");
     	headElement.innerHTML = "花火学园 Minecraft 服务器";
     	headElement.style.color = "red";
+    	headElement.href = "/thread-5334-1-1.html";
     	mainTarget.appendChild(headElement);
     	for (var i = 0; i < servers.length; ++i){
 			var targetElement = document.createElement("A");
@@ -68,6 +69,7 @@
 										<span class="sample" style="color:blue"></span>';
 			targetElement.id = idPrefix + servers[i]["alias"];
 			targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
+			targetElement.href = "/thread-5334-1-1.html";
 			mainTarget.appendChild(targetElement);
 		}
 		MainQuerier();
