@@ -91,7 +91,7 @@ document.getElementById("shake-now").addEventListener("click",
                   for (var e = 0; e < O.length; e++) {
                       T(O[e])
                   }
-              }, 10000)
+              }, 9000)
           }, true);
           e.addEventListener("ended", function() {
               N();
