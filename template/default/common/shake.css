@@ -12,31 +12,31 @@
 }
 
 .mw-harlem_shake_me {
-  transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -webkit-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  -ms-transition: all 0.6s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
 
-  animation: spin 0.6s infinite linear;
-  -moz-animation: spin 0.6s infinite linear;
-  -webkit-animation: spin 0.6s infinite linear;
-  -o-animation: spin 0.6s infinite linear;
-  -ms-animation: spin 0.6s infinite linear;
+  animation: spin 0.3s infinite linear;
+  -moz-animation: spin 0.3s infinite linear;
+  -webkit-animation: spin 0.3s infinite linear;
+  -o-animation: spin 0.3s infinite linear;
+  -ms-animation: spin 0.3s infinite linear;
 }
 
 .mw-harlem_shake_slow {
-   transition: all 0.6s ease-in-out;
-  -moz-transition: all 0.6s ease-in-out;
-  -webkit-transition: all 0.6s ease-in-out;
-  -o-transition: all 0.6s ease-in-out;
-  -ms-transition: all 0.6s ease-in-out;
+   transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
 
-  animation: spin 1.2s infinite linear;
-  -moz-animation: spin 1.2s infinite linear;
-  -webkit-animation: spin 1.2s infinite linear;
-  -o-animation: spin 1.2s infinite linear;
-  -ms-animation: spin 1.2s infinite linear;
+  animation: spin 0.3s infinite linear;
+  -moz-animation: spin 0.3s infinite linear;
+  -webkit-animation: spin 0.3s infinite linear;
+  -o-animation: spin 0.3s infinite linear;
+  -ms-animation: spin 0.3s infinite linear;
 }
 
 /*
@@ -49,10 +49,10 @@ body {
 }
 
 .mw-harlem_shake_me {
-  -webkit-animation-duration: .6s;
-     -moz-animation-duration: .6s;
-       -o-animation-duration: .6s;
-          animation-duration: .6s;
+  -webkit-animation-duration: .3s;
+     -moz-animation-duration: .3s;
+       -o-animation-duration: .3s;
+          animation-duration: .3s;
   -webkit-animation-fill-mode: both;
      -moz-animation-fill-mode: both;
        -o-animation-fill-mode: both;
@@ -60,10 +60,10 @@ body {
 }
 
 .mw-harlem_shake_slow {
-  -webkit-animation-duration: .6s;
-     -moz-animation-duration: .6s;
-       -o-animation-duration: .6s;
-          animation-duration: .6s;
+  -webkit-animation-duration: .3s;
+     -moz-animation-duration: .3s;
+       -o-animation-duration: .3s;
+          animation-duration: .3s;
   -webkit-animation-fill-mode: both;
      -moz-animation-fill-mode: both;
        -o-animation-fill-mode: both;
