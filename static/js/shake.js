@@ -1,4 +1,4 @@
-var crazy = function() {
+var crazy = function(){
       function c() {
           var e = document.createElement("link");
           e.setAttribute("type", "text/css");
@@ -146,7 +146,7 @@ var crazy = function() {
               O.push(A)
           }
       }
-    };
+};
 
 (function(){
       document.addEventListener('DOMContentLoaded', function() {
@@ -156,5 +156,5 @@ var crazy = function() {
         link.href = "javascript:void(0)";
         link.innerHTML = "High 一 high";
         document.getElementById("toptb").getElementsByClassName("z")[0].appendChild(link);
-        document.getElementById("shake-now").addEventListener("click", crazy, false);
-});}())
+        document.getElementById("shake-now").addEventListener("click", crazy, false);});
+}());
