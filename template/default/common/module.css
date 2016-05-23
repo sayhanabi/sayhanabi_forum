@@ -1931,7 +1931,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /** search **/
 a { color: #369; }
 body { background: #FFF none !important; }
-	#toptb { padding: 0 15px; border-bottom: 1px solid #EFEFEF; }
+	#toptb { padding: 0 15px; border-bottom: 1px solid #EFEFEF; position: relative;}
 #ct { margin: 0 20px; }
 #scform { margin: 10px 0;}
 	#scform h1 { margin-right: 20px; }
