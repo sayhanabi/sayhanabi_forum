@@ -577,7 +577,7 @@ CSS 写作注意事项：
 /* 通用容器，定义页面宽度 */ .wp { margin: 0 auto; width: 960px; } #wp .wp { width: auto; }
 
 /* 页头 */
-	#toptb { min-width: 960px; border-bottom: 1px solid {COMMONBORDER}; background: {COMMONBG}; line-height: 28px; position: fixed; width: 100%;}
+	#toptb { min-width: 960px; border-bottom: 1px solid {COMMONBORDER}; background: {COMMONBG}; line-height: 28px; position: fixed; width: 100%; z-index: 999;}
 		#toptb a { float: left; padding: 0 4px; height: 28px; }
 		#toptb a.showmenu { padding-right: 15px; }
 		#toptb a.hover { background-color: #FFF; }
