@@ -109,10 +109,10 @@ var crazy = function(){
               e[n].className = e[n].className.replace(t, "")
           }
       }
-      var e = 30;
-      var t = 30;
-      var n = 350;
-      var r = 350;
+      var e = 10;
+      var t = 10;
+      var n = 700;
+      var r = 700;
       var i = "/static/upload/sabm.mp3";
       var s = "mw-harlem_shake_me";
       var o = "im_first";
