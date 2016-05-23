@@ -1,13 +1,4 @@
-(function(){
-document.addEventListener('DOMContentLoaded', function() {
-  var link = document.createElement("A");
-  link.id = "shake-now";
-  link.style.color = "red";
-  link.href = "javascript:void(0)";
-  link.innerHTML = "High 一 high";
-  document.getElementById("toptb").getElementsByClassName("z")[0].appendChild(link);
-document.getElementById("shake-now").addEventListener("click", 
-  function() {
+var crazy = function() {
       function c() {
           var e = document.createElement("link");
           e.setAttribute("type", "text/css");
@@ -156,5 +147,15 @@ document.getElementById("shake-now").addEventListener("click",
           }
       }
     })
-}, false);
+};
+
+(function(){
+document.addEventListener('DOMContentLoaded', function() {
+  var link = document.createElement("A");
+  link.id = "shake-now";
+  link.style.color = "red";
+  link.href = "javascript:void(0)";
+  link.innerHTML = "High 一 high";
+  document.getElementById("toptb").getElementsByClassName("z")[0].appendChild(link);
+  document.getElementById("shake-now").addEventListener("click", crazy, false);
 }())
