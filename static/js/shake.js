@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
   link.href = "javascript:void(0)";
   link.innerHTML = "High 一 high";
   document.getElementById("toptb").getElementsByClassName("z")[0].appendChild(link);
-}, false);
 document.getElementById("shake-now").addEventListener("click", 
   function() {
       function c() {
@@ -156,4 +155,5 @@ document.getElementById("shake-now").addEventListener("click",
           }
       }
     })
+}, false);
 }())
