@@ -146,8 +146,7 @@ var crazy = function() {
               O.push(A)
           }
       }
-    })
-};
+    };
 
 (function(){
 document.addEventListener('DOMContentLoaded', function() {
@@ -158,4 +157,4 @@ document.addEventListener('DOMContentLoaded', function() {
   link.innerHTML = "High 一 high";
   document.getElementById("toptb").getElementsByClassName("z")[0].appendChild(link);
   document.getElementById("shake-now").addEventListener("click", crazy, false);
-}})
+});})
