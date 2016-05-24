@@ -69,7 +69,7 @@
 										<span class="sample" style="color:blue"></span>';
 			targetElement.id = idPrefix + servers[i]["alias"];
 			targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
-			targetElement.href = "http://mcstat" + servers[i]["alias"].substring(2,3) + ".say-hanabi.com";
+			targetElement.href = "http://mcstat" + servers[i]["alias"].substring(2,4) + ".say-hanabi.com";
 			mainTarget.appendChild(targetElement);
 		}
 		MainQuerier();
