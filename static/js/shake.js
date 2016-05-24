@@ -154,7 +154,7 @@ var crazy = function(){
         link.id = "shake-now";
         link.style.color = "red";
         link.href = "javascript:void(0)";
-        link.innerHTML = "High 一 high";
+        link.innerHTML = "嗨一下";
         document.getElementById("toptb").getElementsByClassName("z")[0].appendChild(link);
         document.getElementById("shake-now").addEventListener("click", crazy, false);});
 }());
