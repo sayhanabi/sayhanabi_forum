@@ -58,7 +58,7 @@
 	document.addEventListener('DOMContentLoaded', function() {
     	var mainTarget = document.getElementById("toptb").getElementsByClassName("z")[0],
     	headElement = document.createElement("A");
-    	headElement.innerHTML = "花火学园 Minecraft 服务器";
+    	headElement.innerHTML = "Minecraft";
     	headElement.style.color = "red";
     	headElement.href = "/thread-5334-1-1.html";
     	mainTarget.appendChild(headElement);
@@ -69,7 +69,7 @@
 										<span class="sample" style="color:blue"></span>';
 			targetElement.id = idPrefix + servers[i]["alias"];
 			targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
-			targetElement.href = "/thread-5334-1-1.html";
+			targetElement.href = "http://mcstat" + servers[i]["alias"].substring(2,3) + ".say-hanabi.com";
 			mainTarget.appendChild(targetElement);
 		}
 		MainQuerier();
