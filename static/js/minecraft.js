@@ -69,7 +69,11 @@
 										<span class="sample" style="color:blue"></span>';
 			targetElement.id = idPrefix + servers[i]["alias"];
 			targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
-			targetElement.href = "http://mcstat" + servers[i]["alias"].substring(2,4) + ".say-hanabi.com";
+			if (servers[i]["alias"] == "mc") {
+				targetElement.href = "/minecraft/stat/1.8";
+			} else {
+				targetElement.href = "/minecraft/stat/1.9";
+			}
 			mainTarget.appendChild(targetElement);
 		}
 		MainQuerier();
