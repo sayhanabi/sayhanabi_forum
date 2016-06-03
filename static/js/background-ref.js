@@ -1,6 +1,6 @@
 'use strict';
 
-var shbg = function(){
+var Shbg = function(){
     var prefix="shbg",
     info="infobox",
     link="image",
@@ -244,4 +244,4 @@ var shbg = function(){
     });
 };
 
-shbg();
+var shbgInstance = new ShBg();
