@@ -204,6 +204,7 @@ var ShBg = function(){
     		img.src = imageTransSrc;
     	} else {
     		loadBackgroundOpaque();
+    		unload();
       	}
     };
     
