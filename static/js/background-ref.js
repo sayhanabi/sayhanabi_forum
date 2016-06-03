@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 'use strict';
 
 var ShBg = function(){
+=======
+var Shbg = function(){
+>>>>>>> 9e965de164aa95829c156bfdabf34d56ea3a211b
     var prefix="shbg",
     info="infobox",
     link="image",
@@ -212,8 +216,7 @@ var ShBg = function(){
             secondline=document.createElement("P"),
             trans,
             opaq;
-            elm.style="min-width:60px;color:white;position:fixed;right:10px;bottom:10px;background:purple;";
-            elm.innerHTML="Test";
+            elm.style="min-width:60px;color:white;position:fixed;right:10px;bottom:10px;background:purple;display:none";
             elm.id=prefix+"-"+info;
             lnk.href="javascript:void(0);";
             spn.innerHTML="|";
@@ -224,7 +227,7 @@ var ShBg = function(){
             	var cur=lnk.cloneNode()
             	cur.setAttribute("data-"+prefix+"-"+link,i);
             	cur.innerHTML="背景"+i;
-            	cur.addEventListener("click", function(){ handleChange(this.getAttribute("data-"+prefix+"-"+link)) });
+            	cur.addEventListener("click", function(){ handleChange(this.getAttribute("data-"+prefix+"-"+link))});
             	firstline.appendChild(cur);
             	firstline.appendChild(spn.cloneNode(true));
             }
