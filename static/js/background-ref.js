@@ -10,11 +10,11 @@ var ShBg = function(){
     defaultTrans=1,
     curImage=localStorage.SayHanabiBg || defaultImage,
     curTran=localStorage.SayHanabiBgTrans || defaultTrans,
-   	imageSrc=srcPrefix+curImage+".jpg",
-   	imageTransSrc=srcPrefix+curImage+"_dim.jpg",
+    imageSrc=srcPrefix+curImage+".jpg",
+    imageTransSrc=srcPrefix+curImage+"_dim.jpg",
     cssAssets = [
 	    [
-	        ["forum", "thread", "home::spacecp", "home::task", "home::medal", "home::magic", "portal", "userapp", "cp", "search", "huxcity", "plugin"],
+	        ["forum", "thread", "home::spacecp", "home::task", "home::medal", "home::magic", "portal", "userapp", "cp", "search", "plugin"],
 	        ["bm_c", "pl", "ct2_a", "ct1", "frame"]
 	    ],
 	    [
@@ -68,12 +68,13 @@ var ShBg = function(){
     },
     loadBackground=function(){
     	document.body.removeAttribute("style");
-	    document.body.style.backgroundImage = "url("+imageSrc+")";
-	    document.body.style.backgroundSize = "cover";
-	    document.body.style.backgroundRepeat = "no-repeat";
-	    document.body.style.backgroundPosition = "center center";
-	    document.body.style.backgroundAttachment = "fixed";
-	    document.body.style.backgroundSize = "cover";
+	document.body.style.backgroundImage = "url("+imageSrc+")";
+	document.body.style.backgroundSize = "cover";
+	document.body.style.backgroundRepeat = "no-repeat";
+	document.body.style.backgroundPosition = "center center";
+	document.body.style.backgroundAttachment = "fixed";
+	document.body.style.backgroundSize = "cover";
+	if (curTran==0) {unload();}
     },
     loadBackgroundDim=function(){
     	for (var i = 0; i < cssAssets.length; ++i) {
@@ -94,9 +95,10 @@ var ShBg = function(){
 	            }
 	        };
 	    };
+	    unload();
     },
     loadBackgroundOpaque=function(){
-		for (var i = 0; i < cssAssets.length; ++i) {
+	for (var i = 0; i < cssAssets.length; ++i) {
 	        for (var j = 0; j < cssAssets[i][0].length; j++) {
 	            if (cssAssets[i][0][j] == zone || cssAssets[i][0][j] == region) {
 	                for (var k = 0; k < cssAssets[i][1].length; k++) {
@@ -110,21 +112,20 @@ var ShBg = function(){
 	            }
 	        };
 	    }; 
+	unload();
     },
     postChange=function(){
-		loadBackground();
-		if (curTran==1){
-			loadBackgroundDim();
-		}
-    	unload();
+	loadBackground();
+	if (curTran==1){
+		loadBackgroundDim();
+	}
     },
     postTrans=function(){
     	if (curTran==1){
-			loadBackgroundDim();
+		loadBackgroundDim();
     	} else {
-		    loadBackgroundOpaque();
+		loadBackgroundOpaque();
     	}
-    	unload();
     },
     handleChange=function(sel){
     	if (sel==curImage||loadState==1) return;
@@ -133,7 +134,7 @@ var ShBg = function(){
     	var img = new Image(), imgTran = new Image();
     	imageSrc = srcPrefix+sel+".jpg";
     	imageTransSrc = srcPrefix+sel+"_dim.jpg";
-    	img.addEventListener("load", postChange);
+    	img.onload=postChange;
     	imgTran.src = imageTransSrc;
     	img.src = imageSrc;
     	localStorage.SayHanabiBg=sel;
@@ -145,7 +146,7 @@ var ShBg = function(){
     	if (sel==1){
     		var img = new Image();
     		imageTransSrc = srcPrefix+curImage+"_dim.jpg",
-    		img.addEventListener("load", postTrans);
+    		img.onload=postTrans;
     		img.src = imageTransSrc;
     	} else {
     		postTrans();
@@ -153,7 +154,7 @@ var ShBg = function(){
     	localStorage.SayHanabiBgTrans=sel;
     },
     getRegion=function(path){
-		var position = path.indexOf(".php");
+	var position = path.indexOf(".php");
 	    if (position !== -1) {
 	        return path.substring(1, position);
 	    } else {
@@ -189,22 +190,21 @@ var ShBg = function(){
     region=zone.substring(0, zone.indexOf("::"));
     this.phase1=function(){
     	var img = new Image();
-    	img.addEventListener("load", loadBackground);
+    	img.onload=loadBackground;
     	img.src = imageSrc;
     	var elm=document.createElement("P");
     	document.body.appendChild(elm);
     	elm.style="min-width:60px;color:white;position:fixed;right:10px;bottom:10px;background:purple;display:none";
         elm.id=prefix+"-"+info;
-        load("正在载入中...");
+    	load("正在载入中...");
     };
     this.phase2=function(){
     	if (curTran==1){
     		var img = new Image();
-    		img.addEventListener("load", function(){loadBackgroundDim(); unload();});
+    		img.onload=loadBackgroundDim;
     		img.src = imageTransSrc;
     	} else {
     		loadBackgroundOpaque();
-    		unload();
       	}
     };
     document.addEventListener("DOMContentLoaded", function(){ 
