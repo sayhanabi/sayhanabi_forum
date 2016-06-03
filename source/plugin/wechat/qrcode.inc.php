@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: qrcode.inc.php 34716 2014-07-14 08:28:32Z nemohou $
+ *      $Id: qrcode.inc.php 34684 2014-07-07 07:27:56Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');

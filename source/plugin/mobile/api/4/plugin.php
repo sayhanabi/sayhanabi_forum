@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: plugin.php 35064 2014-11-04 01:00:09Z nemohou $
+ *      $Id: profile.php 34314 2014-02-20 01:04:24Z nemohou $
  */
 
 if(!defined('IN_MOBILE_API')) {
@@ -15,9 +15,11 @@ include_once 'plugin.php';
 
 class mobile_api {
 
+	//note 程序模块执行前需要运行的代码
 	function common() {
 	}
 
+	//note 程序模板输出前运行的代码
 	function output() {
 		json_output();
 	}

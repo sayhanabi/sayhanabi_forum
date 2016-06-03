@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat_setting.inc.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: wechat_setting.inc.php 34891 2014-08-20 07:24:39Z nemohou $
  */
 
 if(!defined('IN_DISCUZ') || !defined('IN_ADMINCP')) {
@@ -53,6 +53,7 @@ if(!submitcheck('settingsubmit')) {
 	showtableheader();
 	showsetting(lang('plugin/wechat', 'wechat_mptype'), array('setting[wechat_mtype]', array(
 		array(0, lang('plugin/wechat', 'wechat_mptype_0'), array('qrcode' => 'none')),
+		//array(1, lang('plugin/wechat', 'wechat_mptype_1'), array('qrcode' => '')),
 		array(2, lang('plugin/wechat', 'wechat_mptype_2'), array('qrcode' => 'none')),
 	)), $setting['wechat_mtype'], 'mradio', 0, 0, lang('plugin/wechat', 'wechat_mptype_comment'));
 	showtagheader('tbody', 'qrcode', $setting['wechat_mtype'] == 1);

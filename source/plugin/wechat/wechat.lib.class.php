@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: wechat.lib.class.php 35024 2014-10-14 07:43:43Z nemohou $
+ *      $Id: wechat.lib.class.php 34815 2014-08-07 02:04:50Z nemohou $
  */
 if (!defined('IN_DISCUZ')) {
 	exit('Access Denied');
@@ -14,6 +14,33 @@ class WeChatServer {
 
 	private $_token;
 
+	/**
+	 * $hooks 格式说明
+	 * array(
+	 * 	'钩子' => array('plugin' => '插件标识', 'include' => '引用的文件', 'class' => '类', 'method' => '方法'),
+	 * ）
+	 * ****** 钩子列表 ******
+	 * receiveAllStart
+	 * receiveMsg::text
+	 * receiveMsg::location
+	 * receiveMsg::image
+	 * receiveMsg::video
+	 * receiveMsg::link
+	 * receiveMsg::voice
+	 * receiveEvent::subscribe
+	 * receiveEvent::unsubscribe
+	 * receiveEvent::scan
+	 * receiveEvent::location
+	 * receiveEvent::click
+	 * receiveAllEnd
+	 * accessCheckSuccess
+	 * 404
+	 *
+	 * example:
+	 * 	array(
+	 * 		'receiveMsg::text' => array('plugin' => 'wechat', 'include' => 'source/plugin/wechat/response.class.php', 'class' => 'WeChatResponse', 'method' => 'text'),
+	 * 	)
+	 */
 	private $_hooks;
 	private $_classes;
 
@@ -100,41 +127,43 @@ class WeChatServer {
 				break;
 
 			case 'link':
-				$result['title'] = (string) $postObj->Title;
-				$result['desc'] = (string) $postObj->Description;
-				$result['url'] = (string) $postObj->Url;
+				$result['title'] = (string) $postObj->Title;       // 消息标题
+				$result['desc'] = (string) $postObj->Description; // 消息描述
+				$result['url'] = (string) $postObj->Url;  // 消息链接
 				break;
 
 			case 'voice':
-				$result['mid'] = (string) $postObj->MediaId;
-				$result['format'] = (string) $postObj->Format;
+				$result['mid'] = (string) $postObj->MediaId;     // 语音消息媒体id，可以调用多媒体文件下载接口拉取该媒体
+				$result['format'] = (string) $postObj->Format;      // 语音格式：amr
 				if (property_exists($postObj, Recognition)) {
-					$result['txt'] = (string) $postObj->Recognition;
+					$result['txt'] = (string) $postObj->Recognition; // 语音识别结果，UTF8编码
 				}
 				break;
 
 			case 'event':
-				$result['event'] = strtolower((string) $postObj->Event);
+				$result['event'] = strtolower((string) $postObj->Event);    // 事件类型，subscribe(订阅)、unsubscribe(取消订阅)、CLICK(自定义菜单点击事???
 				switch ($result['event']) {
 
-					case 'subscribe':
-					case 'scan':
+					// case 'unsubscribe': // 取消订阅
+					case 'subscribe': // 订阅
+					case 'scan': // 扫描二维码
 						if (property_exists($postObj, EventKey)) {
+							// 扫描带参数二维码事件
 							$result['key'] = str_replace(
 								'qrscene_', '', (string) $postObj->EventKey
-							);
+							); // 事件KEY值，qrscene_为前缀，后面为二维码的参数值
 							$result['ticket'] = (string) $postObj->Ticket;
 						}
 						break;
 
-					case 'location':
-						$result['la'] = (string) $postObj->Latitude;
-						$result['lo'] = (string) $postObj->Longitude;
-						$result['p'] = (string) $postObj->Precision;
+					case 'location': // 上报地理位置事件
+						$result['la'] = (string) $postObj->Latitude;  // 地理位置纬度
+						$result['lo'] = (string) $postObj->Longitude; // 地理位置经度
+						$result['p'] = (string) $postObj->Precision; // 地理位置精度
 						break;
 
-					case 'click':
-						$result['key'] = (string) $postObj->EventKey;
+					case 'click': // 自定义菜单事件
+						$result['key'] = (string) $postObj->EventKey; // 事件KEY值，与自定义菜单接口中KEY值对???
 						break;
 					case 'masssendjobfinish':
 						$result['msg_id'] = (string) $postObj->MsgID;
@@ -169,6 +198,7 @@ class WeChatServer {
 
 			$this->_activeHook('receiveAllStart', $postObj);
 
+			// Call Special Request Handle Function
 			if (isset($postObj['event'])) {
 				$hookName = 'receiveEvent::' . $postObj['event'];
 			} else {
@@ -180,6 +210,7 @@ class WeChatServer {
 		} elseif (isset($_GET['echostr'])) {
 
 			$this->_activeHook('accessCheckSuccess');
+			// avoid of xss
 			if (!headers_sent()) {
 				header('Content-Type: text/plain');
 			}
@@ -303,6 +334,8 @@ class WeChatServer {
 
 class WeChatClient {
 
+	// SETTING
+	// Tail this file N U will see.
 	public static $_URL_API_ROOT = 'https://api.weixin.qq.com';
 	public static $_URL_FILE_API_ROOT = 'http://file.api.weixin.qq.com';
 	public static $_URL_QR_ROOT = 'http://mp.weixin.qq.com';
@@ -392,6 +425,7 @@ class WeChatClient {
 	    '50001' => '&#x7528;&#x6237;&#x672A;&#x6388;&#x6743;&#x8BE5;api',
 	);
 	public static $_USERINFO_LANG = 'en';
+	// DATA
 	private $_appid;
 	private $_appsecret;
 	private static $_accessTokenCache = array();
@@ -426,6 +460,12 @@ class WeChatClient {
 		return $result;
 	}
 
+	/**
+	 * @method get
+	 * @static
+	 * @param  {string}
+	 * @return {string|boolen}
+	 */
 	public static function get($url) {
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
@@ -445,6 +485,13 @@ class WeChatClient {
 		return $data;
 	}
 
+	/**
+	 * @method post
+	 * @static
+	 * @param  {string}        $url URL to post data to
+	 * @param  {string|array}  $data Data to be post
+	 * @return {string|boolen} Response string or false for failure.
+	 */
 	private static function post($url, $data) {
 		if (!function_exists('curl_init')) {
 			return '';
@@ -479,6 +526,7 @@ class WeChatClient {
 			self::$_accessTokenCache[$appid] = $_G['cache'][$cachename];
 		}
 
+		// check cache
 		if (!empty(self::$_accessTokenCache[$appid])) {
 			$myTokenInfo = self::$_accessTokenCache[$appid];
 			if (time() < $myTokenInfo['expiration']) {
@@ -486,12 +534,14 @@ class WeChatClient {
 			}
 		}
 
+		// get new token
 		$url = self::$_URL_API_ROOT . "/cgi-bin/token?grant_type=client_credential&appid=$appid&secret=$appsecret";
 
 		$json = self::get($url);
 		$res = json_decode($json, true);
 
 		if (self::checkIsSuc($res)) {
+			// update cache
 			self::$_accessTokenCache[$appid] = $myTokenInfo = array(
 			    'token' => $res['access_token'],
 			    'expiration' => time() + (int) $res['expires_in']
@@ -511,6 +561,7 @@ class WeChatClient {
 		}
 	}
 
+	// *************** media file upload/download ************
 	public function upload($type, $file_path, $mediaidOnly = 1) {
 		$access_token = $this->getAccessToken();
 		$url = self::$_URL_FILE_API_ROOT . "/cgi-bin/media/upload?access_token=$access_token&type=$type";
@@ -531,6 +582,7 @@ class WeChatClient {
 		return self::get($url);
 	}
 
+	// *************** MENU ******************
 	public function getMenu() {
 
 		$access_token = $this->getAccessToken();
@@ -569,6 +621,7 @@ class WeChatClient {
 		return self::checkIsSuc($res);
 	}
 
+	// *************** send msg ******************
 	private function _send($to, $type, $data) {
 		$access_token = $this->getAccessToken();
 		$url = self::$_URL_API_ROOT . "/cgi-bin/message/custom/send?access_token=$access_token";
@@ -717,6 +770,8 @@ class WeChatClient {
 		));
 	}
 
+	// *************** followers admin ******************
+	// follower group
 	public function createGroup($name) {
 		$access_token = $this->getAccessToken();
 		$url = self::$_URL_API_ROOT . "/cgi-bin/groups/create?access_token=$access_token";
@@ -786,6 +841,7 @@ class WeChatClient {
 		return self::checkIsSuc($res) ? $res['groupid'] : null;
 	}
 
+	// *************** Followers info ******************
 	public function getUserInfoById($uid, $lang = '') {
 		if (!$lang) {
 			$lang = self::$_USERINFO_LANG;
@@ -817,6 +873,7 @@ class WeChatClient {
 			) : null;
 	}
 
+	// ************************** OAuth *****************
 	public function getOAuthConnectUri($redirect_uri, $state = '', $scope = 'snsapi_base') {
 		$redirect_uri = urlencode($redirect_uri);
 		$url = "https://open.weixin.qq.com/connect/oauth2/authorize?appid={$this->_appid}&redirect_uri={$redirect_uri}&response_type=code&scope={$scope}&state={$state}#wechat_redirect";
@@ -841,6 +898,7 @@ class WeChatClient {
 		return $res;
 	}
 
+	// ************************** qr code *****************
 	public static function getQrcodeImgByTicket($ticket) {
 		return self::get($this->getQrcodeImgUrlByTicket($ticket));
 	}

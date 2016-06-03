@@ -4,11 +4,11 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: mobile.class.php 35168 2014-12-25 02:29:36Z nemohou $
+ *      $Id: mobile.class.php 35932 2016-05-13 03:05:45Z nemohou $
  */
 
 define("MOBILE_PLUGIN_VERSION", "4");
-define("REQUEST_METHOD_DOMAIN", 'http://wsq.discuz.qq.com');
+define("REQUEST_METHOD_DOMAIN", 'http://wsq.discuz.com');
 
 class mobile_core {
 
@@ -183,30 +183,48 @@ class mobile_core {
 		return $variables;
 	}
 
+	/**
+	 * 设置跨域请求header
+	 * @param type $request_method
+	 * @param type $origin
+	 */
 	function make_cors($request_method, $origin = '') {
 
 		$origin = $origin ? $origin : REQUEST_METHOD_DOMAIN;
 
 		if ($request_method === 'OPTIONS') {
+			// 这个*可以设置为想允许的域名比如
 			header('Access-Control-Allow-Origin:'.$origin);
 
+			/**
+			* 是否允许发送cookie，以及支持的请求。
+			*/
 			header('Access-Control-Allow-Credentials:true');
 			header('Access-Control-Allow-Methods:GET, POST, OPTIONS');
 
+			// 自定义一些头，这个也可以当作一个密钥，必须与请求时候的头是一致的。
+			//header('Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type');
 
+			/**
+			// 设置一个过期时间，由于options只是一个握手的工作，所以时间可以设的长一点儿
+			 *
+			 */
 			header('Access-Control-Max-Age:1728000');
 			header('Content-Type:text/plain charset=UTF-8');
 			header("status: 204");
 			header('HTTP/1.0 204 No Content');
 			header('Content-Length: 0',true);
+			//header('Content-Type: text/html',true);
 			flush();
 		}
 
+		// 真实的请求数据
 		if ($request_method === 'POST') {
 
 			header('Access-Control-Allow-Origin:'.$origin);
 			header('Access-Control-Allow-Credentials:true');
 			header('Access-Control-Allow-Methods:GET, POST, OPTIONS');
+			//header('Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type');
 		}
 
 		if ($request_method === 'GET') {
@@ -214,8 +232,16 @@ class mobile_core {
 			header('Access-Control-Allow-Origin:'.$origin);
 			header('Access-Control-Allow-Credentials:true');
 			header('Access-Control-Allow-Methods:GET, POST, OPTIONS');
+			//header('Access-Control-Allow-Headers:DNT,X-Mx-ReqToken,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type');
 		}
 
+		//credentials 使用注意 http://msdn.microsoft.com/zh-cn/library/ie/dn423949(v=vs.85).aspx
+		//SEC7121 "当凭据标志设置为 True 时，不允许 Access-Control-Allow-Origin 中的通配符。
+		//服务器正在标头中返回“Access-Control-Allow-Origin: *”，但当在 XMLHttpRequest 中将 withCredentials 标志设置为 True 时，则不允许该操作。
+		//需要修改服务器端处理程序以返回“Access-Control-Allow-Origin”标头，该标头特别允许此类请求上的原点。如果你不能控制服务器端处理程序，则需要与执行此操作的开发人员联系。
+		//
+		//client:xhr.withCredentials = true;
+		//server:header('Access-Control-Allow-Credentials:true');
 	}
 
 	function usergroupIconId($groupid) {

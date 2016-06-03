@@ -1,6 +1,6 @@
 'use strict';
 
-var Shbg = function(){
+var ShBg = function(){
     var prefix="shbg",
     info="infobox",
     link="image",
@@ -188,13 +188,13 @@ var Shbg = function(){
 	    return region + mod;
     },
     zone=getZone(),
-    region=zone.substring(0, zone.indexOf("::")),
-    phase1=function(){
+    region=zone.substring(0, zone.indexOf("::"));
+    this.phase1=function(){
     	var img = new Image();
     	img.addEventListener("load", loadBackground);
     	img.src = imageSrc;
-    },
-    phase2=function(){
+    };
+    this.phase2=function(){
     	if (curTran==1){
     		var img = new Image();
     		img.addEventListener("load", loadBackgroundDim);

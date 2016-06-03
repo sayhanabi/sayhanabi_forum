@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: viewthread.php 35159 2014-12-23 02:22:03Z nemohou $
+ *      $Id: viewthread.php 35157 2014-12-23 01:53:17Z nemohou $
  */
 if (!defined('IN_MOBILE_API')) {
 	exit('Access Denied');

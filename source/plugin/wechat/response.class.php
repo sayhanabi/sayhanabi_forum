@@ -4,7 +4,7 @@
  *      [Discuz!] (C)2001-2099 Comsenz Inc.
  *      This is NOT a freeware, use is subject to license terms
  *
- *      $Id: response.class.php 35127 2014-12-02 08:17:18Z nemohou $
+ *      $Id: response.class.php 35121 2014-11-27 06:21:38Z nemohou $
  */
 
 if (!defined('IN_DISCUZ')) {
@@ -33,6 +33,7 @@ class WSQResponse {
 				wsq::report('loginclick');
 				self::_show('access', $data['from']);
 			}
+//			echo WeChatServer::getXml4Txt(lang('plugin/wechat', 'wechat_response_text_codeerror'));
 		} else {
 			wsq::report('sendnum');
 			self::_show('sendnum', $data['from']."\t".$authcode['sid'], 60);
@@ -86,6 +87,7 @@ class WSQResponse {
 		}
 		$authcode = C::t('#wechat#mobile_wechat_authcode')->fetch_by_code($data['key']);
 		if(!$authcode || $authcode['status']) {
+//			echo WeChatServer::getXml4Txt(lang('plugin/wechat', 'wechat_response_text_codeerror'));
 		} else {
 			if($authcode['uid']) {
 				$member = getuserbyuid($authcode['uid'], 1);
