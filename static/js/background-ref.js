@@ -209,14 +209,13 @@ var ShBg = function(){
     };
     
     document.addEventListener("DOMContentLoaded", function(){ 
-            var 
-            target=document.getElementById("um"),
+            var target=document.getElementById("um"),
             lnk=document.createElement("A"),
             spn=document.createElement("SPAN"),
             firstline=document.createElement("P"),
             secondline=document.createElement("P"),
             trans,
-            opaq,
+            opaq;
             lnk.href="javascript:void(0);";
             spn.innerHTML="|";
             spn.setAttribute("class", "pipe");
@@ -226,7 +225,7 @@ var ShBg = function(){
             	var cur=lnk.cloneNode()
             	cur.setAttribute("data-"+prefix+"-"+link,i);
             	cur.innerHTML="背景"+i;
-            	cur.addEventListener("click", function(){ handleChange(this.getAttribute("data-"+prefix+"-"+link))});
+            	cur.addEventListener("click", function(){ this.style.color="red";handleChange(this.getAttribute("data-"+prefix+"-"+link))});
             	firstline.appendChild(cur);
             	firstline.appendChild(spn.cloneNode(true));
             }
