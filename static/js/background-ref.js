@@ -264,7 +264,7 @@ var ShBg = function() {
             firstline.appendChild(cur);
             firstline.appendChild(spn.cloneNode(true));
         }
-        firstLine.removeChild(firstLine.lastChild);
+        firstline.removeChild(firstline.lastChild);
         trans.innerHTML = "\u900F\u660E";
         trans.setAttribute("data-" + prefix + "-" + through, 1);
         trans.addEventListener("click", function() {
