@@ -71,15 +71,23 @@ var ShBg = function() {
         load = function() {
             if (loadState) return;
             loadState = 1;
-            document.getElementById(prefix+"-"+info).innerHTML=infoUpdate();
+            try {
+                document.getElementById(prefix+"-"+info).innerHTML=infoUpdate();
+            } catch (err) {
+                
+            }
         },
         unload = function() {
             if (!loadState) return;
             loadState = 0;
-            document.getElementById(prefix+"-"+info).innerHTML=infoUpdate();
+            try {
+                document.getElementById(prefix+"-"+info).innerHTML=infoUpdate();
+            } catch (err) {
+                
+            }
         },
         infoUpdate = function() {
-            var infoText = imageAssets[curImage]["source"]+'，'+'\u7531<a href="/space-uid-'+imageAssets[curImage]["id"]+'.html" target="_blank">'+imageAssets[curImage]["user"]+'</a>\u63A8\u8350';            
+            var infoText = imageAssets[curImage]["source"]+'，'+'\u7531<a href="/space-uid-'+imageAssets[curImage]["id"]+'.html" target="_blank"> '+imageAssets[curImage]["user"]+' </a>\u63A8\u8350';            
             if (loadState==1){
                 return '\u6B63\u5728\u8F7D\u5165'+infoText;
             } else {
@@ -230,7 +238,7 @@ var ShBg = function() {
         try {
             var target = document.getElementById("um");
         } catch (err) {
-            return;
+            return false;
         }
         var lnk = document.createElement("A"),
             spn = document.createElement("SPAN"),
@@ -256,6 +264,7 @@ var ShBg = function() {
             firstline.appendChild(cur);
             firstline.appendChild(spn.cloneNode(true));
         }
+        firstLine.removeChild(firstLine.lastChild);
         trans.innerHTML = "\u900F\u660E";
         trans.setAttribute("data-" + prefix + "-" + through, 1);
         trans.addEventListener("click", function() {
@@ -269,7 +278,6 @@ var ShBg = function() {
         secondline.appendChild(trans);
         secondline.appendChild(spn.cloneNode(true));
         secondline.appendChild(opaq);
-        secondline.appendChild(spn.cloneNode(true));
         target.appendChild(zeroline);
         target.appendChild(firstline);
         target.appendChild(secondline);
