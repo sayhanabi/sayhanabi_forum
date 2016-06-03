@@ -192,10 +192,10 @@ var ShBg = function(){
     	img.addEventListener("load", loadBackground);
     	img.src = imageSrc;
     	var elm=document.createElement("P");
+    	document.body.appendChild(elm);
     	elm.style="min-width:60px;color:white;position:fixed;right:10px;bottom:10px;background:purple;display:none";
         elm.id=prefix+"-"+info;
-        load("正在载入中");
-        document.body.appendChild(elm);
+        load("正在载入中...");
     };
     this.phase2=function(){
     	if (curTran==1){
@@ -207,7 +207,6 @@ var ShBg = function(){
     		unload();
       	}
     };
-    
     document.addEventListener("DOMContentLoaded", function(){ 
             var target=document.getElementById("um"),
             lnk=document.createElement("A"),
@@ -241,7 +240,6 @@ var ShBg = function(){
             secondline.appendChild(spn.cloneNode(true));
             target.appendChild(firstline);
             target.appendChild(secondline);
-
     });
 };
 
