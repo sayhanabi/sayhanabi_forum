@@ -225,7 +225,7 @@ var ShBg = function(){
             	var cur=lnk.cloneNode()
             	cur.setAttribute("data-"+prefix+"-"+link,i);
             	cur.innerHTML="背景"+i;
-            	cur.addEventListener("click", function(){ this.style.color="red";handleChange(this.getAttribute("data-"+prefix+"-"+link))});
+            	cur.addEventListener("click", function(){ handleChange(this.getAttribute("data-"+prefix+"-"+link))});
             	firstline.appendChild(cur);
             	firstline.appendChild(spn.cloneNode(true));
             }
