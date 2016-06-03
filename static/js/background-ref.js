@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-'use strict';
-
-var ShBg = function(){
-=======
 var Shbg = function(){
->>>>>>> 9e965de164aa95829c156bfdabf34d56ea3a211b
     var prefix="shbg",
     info="infobox",
     link="image",
