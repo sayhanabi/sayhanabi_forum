@@ -1,4 +1,4 @@
-var Shbg = function(){
+var ShBg = function(){
     var prefix="shbg",
     info="infobox",
     link="image",
