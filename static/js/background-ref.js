@@ -191,27 +191,31 @@ var ShBg = function(){
     	var img = new Image();
     	img.addEventListener("load", loadBackground);
     	img.src = imageSrc;
+    	var elm=document.createElement("P");
+    	elm.style="min-width:60px;color:white;position:fixed;right:10px;bottom:10px;background:purple;display:none";
+        elm.id=prefix+"-"+info;
+        load("正在载入中");
+        document.body.appendChild(elm);
     };
     this.phase2=function(){
     	if (curTran==1){
     		var img = new Image();
-    		img.addEventListener("load", loadBackgroundDim);
+    		img.addEventListener("load", function(){loadBackgroundDim(); unload();});
     		img.src = imageTransSrc;
     	} else {
     		loadBackgroundOpaque();
       	}
     };
+    
     document.addEventListener("DOMContentLoaded", function(){ 
-            var elm=document.createElement("P"),
+            var 
             target=document.getElementById("um"),
             lnk=document.createElement("A"),
             spn=document.createElement("SPAN"),
             firstline=document.createElement("P"),
             secondline=document.createElement("P"),
             trans,
-            opaq;
-            elm.style="min-width:60px;color:white;position:fixed;right:10px;bottom:10px;background:purple;display:none";
-            elm.id=prefix+"-"+info;
+            opaq,
             lnk.href="javascript:void(0);";
             spn.innerHTML="|";
             spn.setAttribute("class", "pipe");
@@ -237,7 +241,7 @@ var ShBg = function(){
             secondline.appendChild(spn.cloneNode(true));
             target.appendChild(firstline);
             target.appendChild(secondline);
-            document.body.appendChild(elm);
+
     });
 };
 
