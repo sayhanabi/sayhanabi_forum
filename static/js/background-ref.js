@@ -241,7 +241,7 @@ var ShBg = function() {
         } catch (err) {
             effect=1;
         } finally{
-            if effect return false;
+            if (effect) return false;
         }
         var lnk = document.createElement("A"),
             spn = document.createElement("SPAN"),
