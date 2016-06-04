@@ -235,10 +235,13 @@ var ShBg = function() {
         }
     };
     document.addEventListener("DOMContentLoaded", function() {
+        var effect;
         try {
             var target = document.getElementById("um");
         } catch (err) {
-            return false;
+            effect=1;
+        } finally{
+            if effect return false;
         }
         var lnk = document.createElement("A"),
             spn = document.createElement("SPAN"),
