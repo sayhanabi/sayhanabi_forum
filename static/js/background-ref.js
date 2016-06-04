@@ -235,14 +235,8 @@ var ShBg = function() {
         }
     };
     document.addEventListener("DOMContentLoaded", function() {
-        var effect;
-        try {
-            var target = document.getElementById("um");
-        } catch (err) {
-            effect=1;
-        } finally{
-            if (effect) return false;
-        }
+        var target = document.getElementById("um");
+        if (!target) return false;
         var lnk = document.createElement("A"),
             spn = document.createElement("SPAN"),
             zeroline = document.createElement("P"),
