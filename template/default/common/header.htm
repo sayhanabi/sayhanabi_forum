@@ -32,7 +32,7 @@
 <body id="nv_{$_G[basescript]}" class="pg_{CURMODULE}{if $_G['basescript'] === 'portal' && CURMODULE === 'list' && !empty($cat)} {$cat['bodycss']}{/if}" onkeydown="if(event.keyCode==27) return false;">
 	<script>shbgInstance.phase1();</script>
 	<!--{eval $s_p = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";}-->
-	<!--<script type="text/javascript" src="<!--{eval echo $s_p.$_SERVER['HTTP_HOST'];}-->/scm/scmplayer.js"></script>-->
+	<script type="text/javascript" src="<!--{eval echo $s_p.$_SERVER['HTTP_HOST'];}-->/scm/scmplayer.js"></script>
   	<div id="append_parent"></div><div id="ajaxwaitid"></div>
 	<!--{if $_GET['diy'] == 'yes' && check_diy_perm($topic)}-->
 		<!--{template common/header_diy}-->
