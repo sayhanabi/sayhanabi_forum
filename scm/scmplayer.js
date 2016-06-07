@@ -17,7 +17,7 @@
 			'placement':'top',
 			'showplaylist':false,
 			'playlist':[
-				{'title':'いけないボーダーライン','url':jShortCut + 'giligililove.mp3'},
+				{'title':'いけないボーダーライン','url':jShortCut + 'giligililove.mp3'}],
 		},
 		config = JSON.stringify(jConfig),
 		postMessage = function(msg){
