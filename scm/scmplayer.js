@@ -17,10 +17,7 @@
 			'placement':'top',
 			'showplaylist':false,
 			'playlist':[
-				{'title':'Horinaito','url':jShortCut + 'horinaito.mp3'},
-				{'title':'Yozuca','url':jShortCut + 'yozuca.mp3'},
-				{'title':'Holy Snow','url':jShortCut + 'holy_snow.mp3'},
-				{'title':'Miku','url':jShortCut + 'miku.mp3'}]
+				{'title':'いけないボーダーライン','url':jShortCut + 'giligililove.mp3'},
 		},
 		config = JSON.stringify(jConfig),
 		postMessage = function(msg){
