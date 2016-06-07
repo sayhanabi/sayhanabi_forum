@@ -1087,7 +1087,7 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 			.pinf strong { color: {MIDTEXT}; }
 			.pinf a { color: {HIGHLIGHTLINK}; }
 		.ptmr { margin: -10px 0 15px; }
-		.imgf2 { position: relative; height: 20px; background: #e9e9e9; border-radius: 0 10px 10px 0; }
+		.imgf2 { position: relative; height: 20px; background: #e9e9e9; border-radius: 0 10px 10px 0; display:none; }
 		.jdt { display: block; width: 1px; height: 20px; background: #f2a61f; border-radius: 0 10px 10px 0;}
 		.imgfc { position: absolute; left: 0; top: 0; padding: 0 5%; width: 90%; line-height: 20px; }
 	/*
