@@ -83,7 +83,7 @@ var crazy = function(){
                   for (var e = 0; e < O.length; e++) {
                       T(O[e])
                   }
-              }, 9750)
+              }, 12000)
           }, true);
           e.addEventListener("ended", function() {
               N();
@@ -113,7 +113,7 @@ var crazy = function(){
       var t = 10;
       var n = 700;
       var r = 700;
-      var i = "/static/upload/sabm.mp3";
+      var i = "/static/upload/giligililove.mp3";
       var s = "mw-harlem_shake_me";
       var o = "im_first";
       var u = ["im_drunk", "im_baked", "im_trippin", "im_blown"];
