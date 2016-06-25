@@ -76,11 +76,7 @@
             targetElement.innerHTML = '<span class="address"></span> <span class="online"></span> \u4EBA\u5728\u7EBF<span class="sample" style="color:blue"></span>';
             targetElement.id = idPrefix + servers[i]["alias"];
             targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
-            if (servers[i]["alias"] == "mc") {
-                targetElement.href = "/minecraft/stat/1.8"
-            } else {
-                targetElement.href = "/minecraft/stat/1.9"
-            }
+            targetElement.href = "/thread-5334-1-1.html";
             mainTarget.appendChild(targetElement)
         }
         MainQuerier();
