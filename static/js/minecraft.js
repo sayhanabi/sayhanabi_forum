@@ -8,6 +8,10 @@
             "host": "mc19.say-hanabi.com",
             "port": "25565",
             "alias": "mc19"
+        }, {
+            "host": "mod.say-hanabi.com",
+            "port": "25565",
+            "alias": "mod"
         }],
         api = "/minecraft/mcQuery.php",
         idPrefix = "mcstat-",
