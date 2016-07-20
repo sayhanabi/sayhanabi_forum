@@ -1,14 +1,6 @@
 "use strict";
 (function() {
     var servers = [{
-            "host": "mc.say-hanabi.com",
-            "port": "25565",
-            "alias": "mc"
-        }, {
-            "host": "mc19.say-hanabi.com",
-            "port": "25565",
-            "alias": "mc19"
-        }, {
             "host": "mod.say-hanabi.com",
             "port": "25565",
             "alias": "mod"
@@ -69,14 +61,14 @@
             headElement = document.createElement("A");
         headElement.innerHTML = "Minecraft";
         headElement.style.color = "red";
-        headElement.href = "/thread-5334-1-1.html";
+        headElement.href = "/thread-9473-1-1.html";
         mainTarget.appendChild(headElement);
         for (var i = 0; i < servers.length; ++i) {
             var targetElement = document.createElement("A");
             targetElement.innerHTML = '<span class="address"></span> <span class="online"></span> \u4EBA\u5728\u7EBF<span class="sample" style="color:blue"></span>';
             targetElement.id = idPrefix + servers[i]["alias"];
             targetElement.getElementsByClassName("address")[0].innerHTML = servers[i]["host"];
-            targetElement.href = "/thread-5334-1-1.html";
+            targetElement.href = "/thread-9473-1-1.html";
             mainTarget.appendChild(targetElement)
         }
         MainQuerier();
