@@ -18,8 +18,8 @@
 			'showplaylist':false,
 			'playlist':[
 				{'title':'いけないボーダーライン','url':jShortCut + 'giligililove.mp3'},
-				{'title':'極楽浄土','url':jShortCut + 'gokurakujoudo.mp3'},
-				{'title':'夏空の光','url':jShortCut + 'natsuzoranohikari.mp3'}],
+				{'title':'夏空の光','url':jShortCut + 'natsuzoranohikari.mp3'},
+				{'title':'極楽浄土','url':jShortCut + 'gokurakujoudo.mp3'}],
 		},
 		config = JSON.stringify(jConfig),
 		postMessage = function(msg){
