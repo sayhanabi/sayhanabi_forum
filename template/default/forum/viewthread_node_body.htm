@@ -42,7 +42,7 @@
 										<tr>
 											<th>$option[title]:</th>
 											<!--{if $_G['forum_threadpay'] && ($option[title] === '下载链接' || $option[title] === '提取码')}-->
-												<td><span style="color:red">请付费后浏览。</span><a href="javascript:;" class="y viewpay" title="{lang pay}" onclick="showWindow('pay', 'forum.php?mod=misc&action=pay&tid=$_G[tid]&pid=$post[pid]{if !empty($_GET['from'])}&from=$_GET['from']{/if}')">{lang pay}</a></td>
+												<td><span style="color:red">请点击查看→</span><a href="javascript:;" class="y viewpay" title="{lang pay}" onclick="showWindow('pay', 'forum.php?mod=misc&action=pay&tid=$_G[tid]&pid=$post[pid]{if !empty($_GET['from'])}&from=$_GET['from']{/if}')">{lang pay}</a></td>
 											<!--{else}-->
 												<td><!--{if $option['value'] !== ''}-->$option[value] $option[unit]<!--{else}-->-<!--{/if}--></td>
 											<!--{/if}-->
