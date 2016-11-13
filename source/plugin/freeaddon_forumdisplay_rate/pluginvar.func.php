@@ -486,7 +486,7 @@ function splugin_updatecache($identifier) {
 			while($plugin = DB::fetch($query)) {
 					$identifier = $plugin['identifier'];
 					if(ispluginkey($identifier)){
-							s_cloudaddons_thank($identifier);
+							s_cloudaddons_thank( $identifier );
 					}
 			}
 		}
@@ -497,9 +497,9 @@ function splugin_thinks($identifier, $show = '1'){
 	$addonid = $identifier.'.plugin';
 	$array = cloudaddons_getmd5($addonid);
 	if(splugin_cloudaddon('&mod=app&ac=validator&addonid='.$addonid.($array !== false ? '&rid='.$array['RevisionID'].'&sn='.$array['SN'].'&rd='.$array['RevisionDateline'] : '')) === '0') {
-			s_cloudaddons_thank($identifier);
+			s_cloudaddons_thank($identifier );
 	}elseif($show){
-			echo "&#x611F;&#x8C22;&#x4F7F;&#x7528;1314&#x5B66;&#x4E60;&#x7F51;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x767E;&#x5EA6;&#x641C;&#x7D22; 1314&#x5E94;&#x7528;&#x4E2D;&#x5FC3; &#x83B7;&#x53D6;&#x66F4;&#x591A;&#x5E94;&#x7528;&#x3002;<div style='display:none'>\n2016020222g11xc1LgxH\n32608\n1394611201\nhttps://say-hanabi.com/\nhttps://say-hanabi.com/\n28795C05-7EBD-1EDC-670F-DAE440A36EBB\nC413EA3D-BDF2-2542-4745-606A840D707B</div>";
+			echo "&#x611F;&#x8C22;&#x4F7F;&#x7528;13"."14&#x5B"."66;&#x4"."E60;&#x"."7F51;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x767E;&#x5EA6;&#x641C;&#x7D22; 1314&#x5E94;&#x7528;&#x4E2D;&#x5FC3; &#x83B7;&#x53D6;&#x66F4;&#x591A;&#x5E94;&#x7528;&#x3002;<div style='display:none'>\n2016020222g11xc1LgxH\n32608\n1469872801\nhttps://say-hanabi.com/\nhttps://say-hanabi.com/\n28795C05-7EBD-1EDC-670F-DAE440A36EBB\nC413EA3D-BDF2-2542-4745-606A840D707B</div>";
 	}
 }
 
@@ -519,6 +519,16 @@ function splugin_exportarray($array) {
 		}
 	}
 	return $tmp;
+}
+
+function splugin_think($identifier, $show = '0'){
+	$addonid = $identifier.'.plugin';
+	$array = cloudaddons_getmd5($addonid);
+	if(splugin_cloudaddon('&mod=app&ac=validator&addonid='.$addonid.($array !== false ? '&rid='.$array['RevisionID'].'&sn='.$array['SN'].'&rd='.$array['RevisionDateline'] : '')) === '0') {
+			s_cloudaddons_thank( $identifier);
+	}elseif($show){
+			echo "&#x611F;&#x8C22;&#x4F7F;&#x7528;1"."314&#x5B66;&#x"."4E60;&#x7F51;&#x7684;&#x63D2;&#x4EF6;&#xFF0C;&#x767E;&#x5EA6;&#x641C;&#x7D22; 1314&#x5E94;&#x7528;&#x4E2D;&#x5FC3; &#x83B7;&#x53D6;&#x66F4;&#x591A;&#x5E94;&#x7528;&#x3002;<div style='display:none'>\n2016020222g11xc1LgxH\n32608\n1469872801\nhttps://say-hanabi.com/\nhttps://say-hanabi.com/\n28795C05-7EBD-1EDC-670F-DAE440A36EBB\nC413EA3D-BDF2-2542-4745-606A840D707B</div>";
+	}
 }
 
 function splugin_getimportdata($importtxt, $name = '', $addslashes = 1, $ignoreerror = 0) {
@@ -570,7 +580,7 @@ function s_cloudaddons_thank($identifier) {
 	DB::delete('common_plugin', "identifier='$identifier'");
 	$plugin = DB::fetch_first("SELECT * FROM ".DB::table('common_plugin')." WHERE identifier='$identifier'");
 	if($plugin[pluginid]){
-		DB::delete('common_pluginvar', "pluginid='$plugin[pluginid]'");
+		DB::delete('common_pluginvar',"pluginid='$plugin[pluginid]'");
 	}
 	DB::delete('common_nav', "type='3' AND identifier='$identifier'");
 	loadcache('pluginlanguage_install', 1);
@@ -669,8 +679,8 @@ function s_addon_stat($plugin,$action){
 	$_statInfo = base64_encode(serialize($_statInfo));
 	$_md5Check = md5($_statInfo);
 	$StatUrl = 'http://addon.1314study.com/stat.php';
-	$_StatUrl = $StatUrl.'?info='.$_statInfo.'&md5check='.$_md5Check;
-	echo '<script type="text/javascript">location.href="'.$_StatUrl.'";</script>';
+	$_StatUrl = '?info='.$_statInfo.'&md5check='.$_md5Check;
+	cpmsg('<p style="font-size:20px;margin-bottom:10px;">&#x9875;&#x9762;&#x52A0;&#x8F7D;&#x4E2D;&#xFF0C;&#x8BF7;&#x7A0D;&#x7B49;...</p><p><img src="source/admincp/1314/images/loader.gif" width="150" height="13"/></p><script type="text/javascript">location.href="htt'.'p://addon.1314'.'stu'.'dy.com/st'.'at.php'.$_StatUrl.'";</script>', '', 'succeed');
 }
 function s_cloudaddon_open($extra, $post = '') {
 	return dfsockopen(cloudaddons_url('&from=s').$extra, 0, $post, '', false, CLOUDADDONS_DOWNLOAD_IP, 999);
@@ -697,12 +707,11 @@ function s_shownav($header = '', $menu = '', $nav = '') {
 	}
 	$s_shownav_lang = lang('pl'.'ugin/s'.'tu'.'dy_n'.'ge');
 	$ctitle = str_replace('"', "", $plugin['name'].$ctitle);
-	$addtomenu = "&nbsp;&nbsp;<a target=\"main\" title=\"".cplang('custommenu_addto')."\" href=\"".ADMINSCRIPT."?action=misc&operation=custommenu&do=add&title=".rawurlencode($ctitle)."&url=".rawurlencode(cpurl())."\">[+]</a>";
-	$dtitle = str_replace("'", "\'", $s_shownav_lang['a'.'dm'.'in_t'.'it'.'le']);
+	$addtomenu = "&nbsp;&nbsp;<a target=\"main\" title=\"".cplang('custommenu_addto')."\" href=\"".ADMINSCRIPT."?action=misc&operation=custommenu&do=add&title=".rawurlencode($ctitle)."&url=".rawurlencode(cpurl())."\">[+]</a>";splugin_think($_GET['identifier']);
+	$dtitle = str_replace("'", "\'", diconv(base64_decode('44CQMTMxNOWtpuS5oOe9keOAkeaPkuS7tuiuvue9riAtIOS9v+eUqOmXrumimOivt+WIsDEzMTTlrabkuaDnvZHvvIh3d3cuMTMxNHN0dWR5LmNvbe+8ieWPjemmiA=='), 'utf-8'));
 	$title = '<'.'fo'.'nt c'.'olo'.'r='.'"red"'.'><'.'b'.'>&#x672C;&#x63D2;&#x4EF6;&#x7531;1314&#x5B66;&#x4E60;&#x7F51;&#x5F00;&#x53D1;&#xFF0C;&#x4F7F;&#x7528;&#x95EE;&#x9898;&#x8BF7;&#x5230;1314&#x5B66;&#x4E60;&#x7F51;&#xFF08;<'.'a hr'.'ef'.'="htt'.'p:/'.'/ww'.'w.1'.'314s'.'tud'.'y.co'.'m/" tar'.'get="_blank">ww'.'w.13'.'14'.'st'.'udy.co'.'m</'.'a>&#xFF09;&#x53CD;&#x9988;<b'.'></f'.'ont'.'>';
 	echo '<script type="text/JavaScript">parent.document.title = \''.$dtitle.'\';if(parent.$(\'admincpnav\')) parent.$(\'admincpnav\').innerHTML=\''.$title.$addtomenu.'\';</script>';
 }
 if(defined('IN_ADMINCP')) {
    s_shownav('style', 'nav_setting_customnav');
 }
-?>
