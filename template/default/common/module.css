@@ -1930,7 +1930,9 @@ i.pstatus { display: block; margin-bottom: -30px; font-size: 12px; text-align: c
 /* ------------------------------------------------------------------------ 搜索相关样式 */
 /** search **/
 a { color: #369; }
-body { background: #FFF none !important; }
+body { background-image: url("/data/attachment/album/201612/26/185005sb8xxx87dpmtfadg.jpg");
+background-size: cover;
+background-repeat: no-repeat; }
 	#toptb { padding: 0 15px; border-bottom: 1px solid #EFEFEF; position: relative;}
 #ct { margin: 0 20px; }
 #scform { margin: 10px 0;}
